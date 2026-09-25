@@ -10,5 +10,8 @@
   "CONFIGURATION_CONTENT": "Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox for simple directory names, and --rest-port to enable optional local reply history. Run --help for the generated option reference.",
   "EXAMPLES_CONTENT": "See [rules.yaml](examples/rules.yaml) and the [container guide](docs/usage.md).",
   "LIMITATIONS_CONTENT": "Do not use for real payments, settlement simulation, production bank authentication, or mixed-currency total calculations. It is a test fixture, not a bank.",
-  "SECURITY_CONTENT": "Use only synthetic data. Credentials and host keys are explicit; bind to loopback and do not expose the optional unauthenticated REST view publicly. YAML has no executable expressions, XML DTDs are refused, and uploads are limited to 8 MiB."
+  "SECURITY_CONTENT": "Use only synthetic data. Credentials and host keys are explicit; bind to loopback and do not expose the optional unauthenticated REST view publicly. YAML has no executable expressions, XML DTDs are refused, and uploads are limited to 8 MiB.",
+  "REGISTRY_URL": "https://github.com/sebastienrousseau/pain001-mockbank/pkgs/container/pain001-mockbank",
+  "REGISTRY_BADGE_IMAGE": "https://img.shields.io/badge/distribution-GHCR",
+  "ADDITIONAL_INSTALL_METHODS": "Public development images are published for linux/amd64 and linux/arm64:\n\n```sh\ndocker pull ghcr.io/sebastienrousseau/pain001-mockbank:edge\n```\n\nUse `sha-<full-commit-id>` for a commit-addressed development tag. `edge` moves\non main/feature pushes after checks. These are development images, not versioned\nreleases. See [container configuration](docs/usage.md); explicit host keys,\ntest credentials and mailbox storage are still required."
 }

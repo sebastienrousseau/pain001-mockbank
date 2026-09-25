@@ -4,6 +4,8 @@
 
 ## [0.0.1] - Unreleased
 
+- Document the public development image and distinguish it from a release.
+
 - Add authenticated SFTP with configurable inbox and outbox paths.
 - Build matching ACCP, RJCT and PDNG pain.002 replies using core pain001.
 - Apply bounded YAML rejection rules without evaluating Python.

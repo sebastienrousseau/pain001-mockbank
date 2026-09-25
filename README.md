@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://github.com/sebastienrousseau/pain001-mockbank/workflows/ci/badge.svg?style=for-the-badge&logo=github" alt="Build" /></a>
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/badge/distribution-source%20only?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/pkgs/container/pain001-mockbank"><img src="https://img.shields.io/badge/distribution-GHCR?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" /></a>
   <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-mockbank?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" /></a>
@@ -63,7 +63,16 @@ cd pain001-mockbank
 poetry install --all-extras
 ```
 
-No PyPI release has been published for this initial iteration.
+Public development images are published for linux/amd64 and linux/arm64:
+
+```sh
+docker pull ghcr.io/sebastienrousseau/pain001-mockbank:edge
+```
+
+Use `sha-<full-commit-id>` for a commit-addressed development tag. `edge` moves
+on main/feature pushes after checks. These are development images, not versioned
+releases. See [container configuration](docs/usage.md); explicit host keys,
+test credentials and mailbox storage are still required.
 
 ---
 
