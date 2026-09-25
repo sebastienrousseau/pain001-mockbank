@@ -8,6 +8,7 @@
 - Build matching ACCP, RJCT and PDNG pain.002 replies using core pain001.
 - Apply bounded YAML rejection rules without evaluating Python.
 - Offer optional REST history and a locally verified container image.
-  Registry publication remains pending explicit authorization.
+- Publish amd64 and arm64 development images to GHCR after CI gates pass,
+  with explicit maintainer authorization for recurring publication.
 
 This initial development iteration is not a tagged release.

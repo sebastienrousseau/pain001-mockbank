@@ -40,9 +40,10 @@ History is in memory; files persist if the mailbox directory is persisted.
 
 ## Container
 
-Registry publication is not enabled pending explicit approval. The intended
-destination is `ghcr.io/sebastienrousseau/pain001-mockbank`, with Linux amd64
-and arm64 images. For now build and run the locally verified image:
+With explicit maintainer authorization, CI publishes development images to
+`ghcr.io/sebastienrousseau/pain001-mockbank:edge` for Linux amd64 and arm64.
+Use `sha-<full-commit-id>` or the image digest to pin a pipeline. The following
+local build remains useful without registry access:
 
 ```sh
 mkdir -p mailbox

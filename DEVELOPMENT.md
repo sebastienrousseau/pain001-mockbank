@@ -8,10 +8,11 @@ They use synthetic data and ephemeral host keys, never a bank endpoint.
 The coverage floor is 100% of package lines and branches.
 
 CI checks Python 3.10 and 3.14, formatting, types, README generation and
-security. The Dockerfile builds locally; recurring registry publication
-requires separate explicit approval and is not enabled. Planned development
-image tags are `edge` and immutable commit identifiers, not versioned releases.
-Maintainers decide release versions.
+security. With explicit maintainer authorization, pushes to main and feature
+branches publish amd64 and arm64 images after those gates. Development image
+tags are `edge` and immutable commit identifiers, not versioned releases.
+Pull requests and manual check runs build without publishing. Maintainers
+decide release versions.
 
 Edit README evidence in `docs/readme-values.json`, then run
 `poetry run python scripts/render_readme.py`. The layout in
