@@ -1,0 +1,56 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+[tool.poetry]
+name = "pain001-mockbank"
+version = "0.0.1"
+description = "Synthetic SFTP payment acknowledgements for integration tests."
+authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
+license = "Apache-2.0 OR MIT"
+packages = [{include = "pain001_mockbank"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4"
+pain001 = ">=0.0.70,<1"
+asyncssh = ">=2.24,<3"
+pyyaml = ">=6,<7"
+defusedxml = ">=0.7,<1"
+fastapi = {version = ">=0.135,<1", optional = true}
+uvicorn = {version = ">=0.53,<1", optional = true}
+
+[tool.poetry.extras]
+rest = ["fastapi", "uvicorn"]
+
+[tool.poetry.scripts]
+pain001-mockbank = "pain001_mockbank.server:main"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=9,<10"
+pytest-cov = ">=7,<8"
+ruff = ">=0.16,<1"
+mypy = ">=1,<2"
+types-pyyaml = ">=6,<7"
+types-defusedxml = ">=0.7,<1"
+httpx = ">=0.28,<1"
+bandit = ">=1.9,<2"
+pip-audit = ">=2.10,<3"
+
+[build-system]
+requires = ["poetry-core>=2,<3"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 79
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=pain001_mockbank --cov-branch --cov-report=term-missing --cov-fail-under=100"
+
+[tool.coverage.report]
+exclude_also = ["if __name__ == .__main__.:"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true

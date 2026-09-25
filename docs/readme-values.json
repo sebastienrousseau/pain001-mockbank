@@ -1,0 +1,14 @@
+{
+  "PROJECT_NAME": "pain001-mockbank",
+  "ONE_SENTENCE_PITCH": "Accept synthetic pain.001 uploads over SFTP and return configurable pain.002 acknowledgements.",
+  "QUICK_START_SUMMARY_PITCH": "start a local synthetic bank",
+  "QUICK_START_SNIPPET": "ssh-keygen -t ed25519 -N '' -f ./mock_host_key\n# Set MOCKBANK_PASSWORD in your shell to a test-only secret first.\npoetry run pain001-mockbank --host-key ./mock_host_key --username synthetic",
+  "QUICK_START_EXPLANATION": "The server listens on 127.0.0.1:2222. Upload synthetic XML into /inbox; read acknowledgements from /outbox. Compare the host key with the locally generated public key before connecting.",
+  "CAPABILITY_AREA": "Integration testing",
+  "CAPABILITY_DESCRIPTION": "SFTP upload, conditional ACCP/RJCT/PDNG replies and optional REST history",
+  "FEATURES_CONTENT": "Authenticated SFTP, explicit host keys, exclusive uploads, bounded mailbox storage, deterministic rule selection and pain.002 serialization delegated to core.",
+  "CONFIGURATION_CONTENT": "Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox for simple directory names, and --rest-port to enable optional local reply history. Run --help for the generated option reference.",
+  "EXAMPLES_CONTENT": "See [rules.yaml](examples/rules.yaml) and the [container guide](docs/usage.md).",
+  "LIMITATIONS_CONTENT": "Do not use for real payments, settlement simulation, production bank authentication, or mixed-currency total calculations. It is a test fixture, not a bank.",
+  "SECURITY_CONTENT": "Use only synthetic data. Credentials and host keys are explicit; bind to loopback and do not expose the optional unauthenticated REST view publicly. YAML has no executable expressions, XML DTDs are refused, and uploads are limited to 8 MiB."
+}

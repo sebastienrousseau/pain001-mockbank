@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+rules:
+  - if: total_amount > 1_000_000
+    reaction: reject
+    reason_code: NARR
+    reason: Total exceeds 1M limit
+  - if: any_iban_country == "XX"
+    reaction: pending

@@ -1,0 +1,2 @@
+<!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#17324d"/><path d="M24 48 64 24 104 48M32 54v40m32-40v40m32-40v40M24 104h80" fill="none" stroke="#8ed6c8" stroke-width="8"/><text x="64" y="79" text-anchor="middle" fill="white" font-family="monospace" font-size="14">TEST</text></svg>
