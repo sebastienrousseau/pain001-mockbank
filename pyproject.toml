@@ -31,7 +31,14 @@ types-pyyaml = ">=6,<7"
 types-defusedxml = ">=0.7,<1"
 httpx = ">=0.28,<1"
 bandit = ">=1.9,<2"
-pip-audit = ">=2.10,<3"
+# pip-audit pulls in filelock (through cachecontrol). filelock <= 4.2.0 has
+# GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92 and GHSA-v4x8-3wr5-3wq8, and 4.2.1
+# needs Python 3.11, so pip-audit installs only there; `make sec` skips it on 3.10.
+pip-audit = {version = ">=2.10,<3", python = ">=3.11"}
+filelock = {version = ">=4.2.1", python = ">=3.11"}
+# certifi comes in through httpx and pip-audit; PYSEC-2026-4320
+# (GHSA-6q48-6c7w-9gw2) affects releases before 2026.10.19.
+certifi = ">=2026.10.19"
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
