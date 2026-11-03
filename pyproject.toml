@@ -39,6 +39,8 @@ filelock = {version = ">=4.2.1", python = ">=3.11"}
 # certifi comes in through httpx and pip-audit; PYSEC-2026-4320
 # (GHSA-6q48-6c7w-9gw2) affects releases before 2026.10.19.
 certifi = ">=2026.10.19"
+# Via pip-audit -> cachecontrol. msgpack < 1.2.3: CVE-2026-114613 (Dependabot #5).
+msgpack = {version = ">=1.2.3", python = ">=3.11"}
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
