@@ -96,6 +96,8 @@ def render() -> str:
         "PROJECT_NAME_LOWER": project,
         "REPO_URL": repo,
         "REPO_DOMAIN_AND_PATH": f"github.com/sebastienrousseau/{project}",
+        # Shields wants owner/repo for a workflow badge, without the host.
+        "GITHUB_REPO": f"sebastienrousseau/{project}",
         "REGISTRY_URL": repo,
         "INSTALL_LIBRARY_SNIPPET": (
             f"git clone {repo}.git\ncd {project}\npoetry install --all-extras"

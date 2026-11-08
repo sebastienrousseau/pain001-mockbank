@@ -11,12 +11,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://github.com/sebastienrousseau/pain001-mockbank/workflows/ci/badge.svg?style=for-the-badge&logo=github" alt="Build" /></a>
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank/pkgs/container/pain001-mockbank"><img src="https://img.shields.io/badge/distribution-GHCR?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" /></a>
-  <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" /></a>
-  <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-mockbank?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" /></a>
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-mockbank/ci.yml?branch=main&style=for-the-badge&logo=github" alt="Build" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/pkgs/container/pain001-mockbank"><img src="https://img.shields.io/badge/distribution-GHCR-fc8d62?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" height="28" /></a>
+  <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
+  <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-mockbank?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" height="28" /></a>
 </p>
 
 ---
