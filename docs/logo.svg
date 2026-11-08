@@ -1,2 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="#17324d"/><path d="M24 48 64 24 104 48M32 54v40m32-40v40m32-40v40M24 104h80" fill="none" stroke="#8ed6c8" stroke-width="8"/><text x="64" y="79" text-anchor="middle" fill="white" font-family="monospace" font-size="14">TEST</text></svg>
+<svg width="3600pt" height="3600pt" version="1.1" viewBox="0 0 3600 3600" xmlns="http://www.w3.org/2000/svg">
+ <path d="m447.48 3262.5h2701.5v225h-2701.5z" fill-rule="evenodd"/>
+ <path d="m441.97 1352.8h-216.98c-62.156 0-112.5-50.344-112.5-112.5v-337.5c0-45 26.719-85.641 68.062-103.36l1575-677.81c28.406-12.234 60.469-12.234 88.875 0l1575 677.81c41.344 17.719 68.062 58.359 68.062 103.36v337.5c0 62.156-50.344 112.5-112.5 112.5h-216.98v1095.6h213.33c62.156 0 112.5 50.484 112.5 112.5v376.16c0 62.156-50.344 112.5-112.5 112.5h-3146.3c-62.156 0-112.5-50.344-112.5-112.5v-376.16c0-62.016 50.344-112.5 112.5-112.5h216.98zm2063.7 1095.6v-1095.6h-379.55v1095.6zm-1031.8-1095.6h-379.55v1095.6h379.55z" fill-rule="evenodd"/>
+</svg>
