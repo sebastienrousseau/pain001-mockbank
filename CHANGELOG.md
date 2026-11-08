@@ -14,8 +14,10 @@
   with explicit maintainer authorization for recurring publication.
 - Floor the dev group's `certifi` at 2026.10.19 (PYSEC-2026-4320) and
   `filelock` at 4.2.1 (GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92,
-  GHSA-v4x8-3wr5-3wq8); pip-audit installs only on Python 3.11+, and
-  `make sec` says it skips pip-audit on 3.10.
+  GHSA-v4x8-3wr5-3wq8).
+- Require Python 3.11 or newer, as the rest of the pain001 suite does;
+  CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
+  every one of them.
 
 pain001-mockbank was never tagged at 0.0.1, so, as a member of the
 pain001 suite, its first release ships at the family's version, 0.0.81.

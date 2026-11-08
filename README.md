@@ -16,7 +16,7 @@
   <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-mockbank?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" /></a>
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.10%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.10 or newer" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" /></a>
 </p>
 
 ---
@@ -78,7 +78,7 @@ test credentials and mailbox storage are still required.
 
 ## Requirements
 
-Python 3.10 or newer and Poetry. CI checks the floor and current Python on Linux. See [toolchain policy](docs/POLICIES.md).
+Python 3.11 or newer and Poetry. CI checks 3.11 to 3.14 on Linux. See [toolchain policy](docs/POLICIES.md).
 
 ---
 

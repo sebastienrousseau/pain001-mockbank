@@ -27,8 +27,8 @@ def render() -> str:
         "API_DOCS_BADGE_IMAGE": "https://img.shields.io/badge/docs-source-blue.svg",
         "ECOSYSTEM_LOGO": "python",
         "DOCS_LOGO": "readthedocs",
-        "MIN_TOOLCHAIN_BADGE_LABEL": "Python-3.10%2B",
-        "MIN_TOOLCHAIN_TEXT": "Python 3.10 or newer",
+        "MIN_TOOLCHAIN_BADGE_LABEL": "Python-3.11%2B",
+        "MIN_TOOLCHAIN_TEXT": "Python 3.11 or newer",
         "ECOSYSTEM_NAME": "Python",
         "ECOSYSTEM_MANIFEST_LANG": "sh",
         "QUICK_START_LANG": "sh",
@@ -40,8 +40,8 @@ def render() -> str:
             "No PyPI release has been published for this initial iteration."
         ),
         "REQUIREMENTS_CONTENT": (
-            "Python 3.10 or newer and Poetry. CI checks the floor and current "
-            "Python on Linux. See [toolchain policy](docs/POLICIES.md)."
+            "Python 3.11 or newer and Poetry. CI checks 3.11 to 3.14 "
+            "on Linux. See [toolchain policy](docs/POLICIES.md)."
         ),
         "ECOSYSTEM_OVERVIEW": (
             "This companion builds on the core pain001 library without "

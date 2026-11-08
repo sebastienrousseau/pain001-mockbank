@@ -7,7 +7,7 @@ Run `poetry install --all-extras`, then `poetry run make check` and
 They use synthetic data and ephemeral host keys, never a bank endpoint.
 The coverage floor is 100% of package lines and branches.
 
-CI checks Python 3.10 and 3.14, formatting, types, README generation and
+CI checks Python 3.11 to 3.14, formatting, types, README generation and
 security. With explicit maintainer authorization, pushes to main and feature
 branches publish amd64 and arm64 images after those gates. Development image
 tags are `edge` and immutable commit identifiers, not versioned releases.
