@@ -31,6 +31,9 @@ types-pyyaml = ">=6,<7"
 types-defusedxml = ">=0.7,<1"
 httpx = ">=0.28,<1"
 bandit = ">=1.9,<2"
+# Complexity gate (scripts/check_complexity.py), as in the siblings.
+radon = ">=6.0.1,<7"
+complexipy = { version = ">=8.1,<9", python = "<3.16" }
 pip-audit = ">=2.10,<3"
 # pip-audit pulls in filelock (through cachecontrol). filelock <= 4.2.0 has
 # GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92 and GHSA-v4x8-3wr5-3wq8.

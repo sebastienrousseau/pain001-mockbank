@@ -29,6 +29,11 @@
   scanning, with every action pinned by commit SHA.
 - Check that every pull-request commit carries a `Signed-off-by` trailer
   (DCO workflow, with the certificate text in `DCO.txt`).
+- Hold every function to the suite's complexity ceilings (cyclomatic
+  10, cognitive 15, Halstead difficulty 30, 60 lines; 500 per file)
+  with `make complexity`, against a committed baseline that may only
+  shrink. Two existing offenders are recorded: `make_reply` and
+  `load_rules`.
 - Require Python 3.11 or newer, as the rest of the pain001 suite does;
   CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
   every one of them.
