@@ -63,11 +63,11 @@ cd pain001-mockbank
 poetry install --all-extras
 ```
 
-Each pain001 suite release, from 0.0.82, publishes a versioned image for
+Each pain001 suite release, from 0.0.81, publishes a versioned image for
 linux/amd64 and linux/arm64, signed with cosign and never moved:
 
 ```sh
-docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.82
+docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.81
 ```
 
 The release's `image.txt` names it by digest. Development images are

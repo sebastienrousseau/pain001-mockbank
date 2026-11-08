@@ -2,7 +2,7 @@
 
 # Changelog
 
-## [0.0.82] - Unreleased
+## [0.0.81] - 2026-11-08
 
 - Install the image build's Poetry from a hash-pinned tree
   (`requirements/poetry.txt`), as OpenSSF Scorecard's
@@ -18,9 +18,6 @@
   provenance and SBOM, signed by digest, never overwritten) and writes the
   release page in the suite's shape with the vendored
   `scripts/release_notes.py`.
-
-## [0.0.81]
-
 - Document the public development image and distinguish it from a release.
 
 - Add authenticated SFTP with configurable inbox and outbox paths.

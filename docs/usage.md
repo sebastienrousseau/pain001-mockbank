@@ -40,7 +40,7 @@ History is in memory; files persist if the mailbox directory is persisted.
 
 ## Container
 
-Each suite release, from 0.0.82, publishes
+Each suite release, from 0.0.81, publishes
 `ghcr.io/sebastienrousseau/pain001-mockbank:<version>` for Linux amd64 and
 arm64: signed with cosign, with build provenance and an SBOM, and never moved.
 Pin a pipeline to a version, or to the digest in the release's `image.txt`.
