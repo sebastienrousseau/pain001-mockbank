@@ -187,7 +187,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Stability guarantees
 
-Initial version 0.0.1. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
+Version 0.0.81, in lockstep with the pain001 suite. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
 
 ---
 

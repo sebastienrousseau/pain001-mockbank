@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 [tool.poetry]
 name = "pain001-mockbank"
-version = "0.0.1"
+version = "0.0.81"
 description = "Synthetic SFTP payment acknowledgements for integration tests."
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
 license = "Apache-2.0 OR MIT"

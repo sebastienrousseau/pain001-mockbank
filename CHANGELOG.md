@@ -2,7 +2,7 @@
 
 # Changelog
 
-## [0.0.1] - Unreleased
+## [0.0.81]
 
 - Document the public development image and distinguish it from a release.
 
@@ -17,4 +17,5 @@
   GHSA-v4x8-3wr5-3wq8); pip-audit installs only on Python 3.11+, and
   `make sec` says it skips pip-audit on 3.10.
 
-This initial development iteration is not a tagged release.
+pain001-mockbank was never tagged at 0.0.1, so, as a member of the
+pain001 suite, its first release ships at the family's version, 0.0.81.
