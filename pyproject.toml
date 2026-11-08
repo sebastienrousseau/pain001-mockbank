@@ -9,7 +9,7 @@ packages = [{include = "pain001_mockbank"}]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
-pain001 = ">=0.0.70,<1"
+pain001 = ">=0.0.80,<1"
 asyncssh = ">=2.24,<3"
 pyyaml = ">=6,<7"
 defusedxml = ">=0.7,<1"

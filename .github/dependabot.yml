@@ -5,6 +5,11 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      # pain001 is hand-bumped in lockstep with the suite; Dependabot
+      # would otherwise propose patch bumps that don't align with our
+      # version-for-version release policy.
+      - dependency-name: pain001
   - package-ecosystem: github-actions
     directory: /
     schedule:

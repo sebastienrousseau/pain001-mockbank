@@ -1519,14 +1519,14 @@ files = [
 
 [[package]]
 name = "pain001"
-version = "0.0.74"
+version = "0.0.80"
 description = "Pain001 is a Python Library for Automating ISO 20022-Compliant Payment Files Using CSV Data."
 optional = false
-python-versions = "<4.0,>=3.10"
+python-versions = "<4.0,>=3.11"
 groups = ["main"]
 files = [
-    {file = "pain001-0.0.74-py3-none-any.whl", hash = "sha256:21db90d2178b6dbb55dd66dbc5b09421450bb4b1fd2063bd0c34c941db193b04"},
-    {file = "pain001-0.0.74.tar.gz", hash = "sha256:927c6a831b74f937906ea1f072ea3177ea9248c9ac847bba7d5a13e593eb56cf"},
+    {file = "pain001-0.0.80-py3-none-any.whl", hash = "sha256:590379161222940531bb963207333115cad1624de4aac888b032e4aa0bfbec8a"},
+    {file = "pain001-0.0.80.tar.gz", hash = "sha256:1ba75712fbb05df5aba850d829e48eabf0c9247dca7021313459adb22c118ad9"},
 ]
 
 [package.dependencies]
@@ -1539,7 +1539,7 @@ rich = ">=15.0.0,<16"
 xmlschema = ">=4.3.2,<5.0.0"
 
 [package.extras]
-api = ["fastapi (>=0.141.1)", "uvicorn[standard] (>=0.54.0)"]
+api = ["fastapi (>=0.162.0)", "uvicorn[standard] (>=0.54.0)"]
 fast = ["lxml (>=6.1.3,<7)"]
 gpg = ["python-gnupg (>=0.5.7,<1)"]
 lsp = ["pygls (>=2.1,<3)"]
@@ -1548,7 +1548,8 @@ otel = ["certifi (>=2026.10.19)", "opentelemetry-api (>=1.27,<2)", "opentelemetr
 parquet = ["pyarrow (>=25.0.1,<26.0.0)"]
 redis = ["redis (>=8.1.0,<9)"]
 rules = ["cel-python (>=0.5,<0.6)", "holidays (>=0.106,<1)"]
-upload = ["paramiko (>=5.0,<6)"]
+sign = ["cryptography (>=50.0.0,<51)"]
+upload = ["paramiko (>=5.1.0,<6)"]
 
 [[package]]
 name = "pathspec"
@@ -2454,4 +2455,4 @@ rest = ["fastapi", "uvicorn"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "4b729a6eeccf3be147d36191a1f63ecde8fdaf2a36366d76d8ce70a80fba1d6b"
+content-hash = "a6166bddb26c9a83db37bd4f413c00559d5a512e8387d6bb8cbb2a50aa5b3077"
