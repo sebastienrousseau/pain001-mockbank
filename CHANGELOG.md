@@ -24,6 +24,9 @@
 - Check daily that the published pain001 suite agrees on one version
   (`scripts/check_suite_consistency.py`, the family's script, and a
   `Suite Consistency` workflow).
+- Score the supply chain with OpenSSF Scorecard weekly and on pushes to
+  main, publishing results for the badge and uploading SARIF to code
+  scanning, with every action pinned by commit SHA.
 - Require Python 3.11 or newer, as the rest of the pain001 suite does;
   CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
   every one of them.
