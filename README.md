@@ -63,15 +63,16 @@ cd pain001-mockbank
 poetry install --all-extras
 ```
 
-Public development images are published for linux/amd64 and linux/arm64:
+Each pain001 suite release, from 0.0.82, publishes a versioned image for
+linux/amd64 and linux/arm64, signed with cosign and never moved:
 
 ```sh
-docker pull ghcr.io/sebastienrousseau/pain001-mockbank:edge
+docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.82
 ```
 
-Use `sha-<full-commit-id>` for a commit-addressed development tag. `edge` moves
-on main/feature pushes after checks. These are development images, not versioned
-releases. See [container configuration](docs/usage.md); explicit host keys,
+The release's `image.txt` names it by digest. Development images are
+also published: `edge` moves on main/feature pushes after checks, and
+`sha-<full-commit-id>` addresses one commit. See [container configuration](docs/usage.md); explicit host keys,
 test credentials and mailbox storage are still required.
 
 ---

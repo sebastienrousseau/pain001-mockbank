@@ -13,6 +13,12 @@
 - Scan every pull request and push to main with CodeQL.
 - Link the private advisory form and the suite security policy from
   `SECURITY.md`.
+- Release in lockstep with the suite: a `v*.*.*` tag builds, attests and
+  signs the sdist and wheel, pushes
+  `ghcr.io/sebastienrousseau/pain001-mockbank:<version>` (amd64 and arm64,
+  provenance and SBOM, signed by digest, never overwritten) and writes the
+  release page in the suite's shape with the vendored
+  `scripts/release_notes.py`.
 
 ## [0.0.81]
 
