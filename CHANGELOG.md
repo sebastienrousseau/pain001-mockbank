@@ -2,6 +2,8 @@
 
 # Changelog
 
+## [0.0.82] - Unreleased
+
 ## [0.0.81]
 
 - Document the public development image and distinguish it from a release.
