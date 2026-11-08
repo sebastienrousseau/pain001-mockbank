@@ -4,6 +4,10 @@
 
 ## [0.0.82] - Unreleased
 
+- Install the image build's Poetry from a hash-pinned tree
+  (`requirements/poetry.txt`), as OpenSSF Scorecard's
+  Pinned-Dependencies check requires.
+
 ## [0.0.81]
 
 - Document the public development image and distinguish it from a release.
