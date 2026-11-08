@@ -10,7 +10,6 @@
 - Fuzz the upload and rules parsers with Atheris (`fuzz/`, a Fuzz
   workflow: two minutes on every change, thirty weekly), and replay the
   seed corpus through the harness in the test suite.
-- Scan every pull request and push to main with CodeQL.
 - Link the private advisory form and the suite security policy from
   `SECURITY.md`.
 - Release in lockstep with the suite: a `v*.*.*` tag builds, attests and
