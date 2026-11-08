@@ -21,6 +21,9 @@
 - Check that every restatement of the version (pyproject, `__version__`,
   CHANGELOG, README) and the pain001 floor agree: `make versions`, run
   by `make check` and by a `Version sources agree` workflow.
+- Check daily that the published pain001 suite agrees on one version
+  (`scripts/check_suite_consistency.py`, the family's script, and a
+  `Suite Consistency` workflow).
 - Require Python 3.11 or newer, as the rest of the pain001 suite does;
   CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
   every one of them.
