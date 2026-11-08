@@ -2,8 +2,22 @@
 
 # Changelog
 
-## [0.0.81]
+## [0.0.81] - 2026-11-08
 
+- Install the image build's Poetry from a hash-pinned tree
+  (`requirements/poetry.txt`), as OpenSSF Scorecard's
+  Pinned-Dependencies check requires.
+- Fuzz the upload and rules parsers with Atheris (`fuzz/`, a Fuzz
+  workflow: two minutes on every change, thirty weekly), and replay the
+  seed corpus through the harness in the test suite.
+- Link the private advisory form and the suite security policy from
+  `SECURITY.md`.
+- Release in lockstep with the suite: a `v*.*.*` tag builds, attests and
+  signs the sdist and wheel, pushes
+  `ghcr.io/sebastienrousseau/pain001-mockbank:<version>` (amd64 and arm64,
+  provenance and SBOM, signed by digest, never overwritten) and writes the
+  release page in the suite's shape with the vendored
+  `scripts/release_notes.py`.
 - Document the public development image and distinguish it from a release.
 
 - Add authenticated SFTP with configurable inbox and outbox paths.

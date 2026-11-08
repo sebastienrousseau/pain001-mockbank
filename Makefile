@@ -2,8 +2,8 @@
 .PHONY: check lint type complexity test sec docs versions
 check: lint type complexity test docs versions
 lint:
-	poetry run ruff check pain001_mockbank tests scripts
-	poetry run ruff format --check pain001_mockbank tests scripts
+	poetry run ruff check pain001_mockbank tests scripts fuzz
+	poetry run ruff format --check pain001_mockbank tests scripts fuzz
 type:
 	poetry run mypy pain001_mockbank
 complexity:

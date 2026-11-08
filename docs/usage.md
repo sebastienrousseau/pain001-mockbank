@@ -40,9 +40,12 @@ History is in memory; files persist if the mailbox directory is persisted.
 
 ## Container
 
-With explicit maintainer authorization, CI publishes development images to
-`ghcr.io/sebastienrousseau/pain001-mockbank:edge` for Linux amd64 and arm64.
-Use `sha-<full-commit-id>` or the image digest to pin a pipeline. The following
+Each suite release, from 0.0.81, publishes
+`ghcr.io/sebastienrousseau/pain001-mockbank:<version>` for Linux amd64 and
+arm64: signed with cosign, with build provenance and an SBOM, and never moved.
+Pin a pipeline to a version, or to the digest in the release's `image.txt`.
+With explicit maintainer authorization, CI also publishes development images
+(`edge`, and `sha-<full-commit-id>` for one commit). The following
 local build remains useful without registry access:
 
 ```sh

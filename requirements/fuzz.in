@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+# Atheris for the fuzz job (.github/workflows/fuzz.yml), installed with
+# --require-hashes into the Poetry environment that holds the package.
+# Atheris ships Linux x86_64 wheels only, so this is compiled for that:
+#   uv pip compile --generate-hashes --python-platform x86_64-manylinux_2_17 \
+#     --python-version 3.12 requirements/fuzz.in -o requirements/fuzz.txt
+atheris>=2.3

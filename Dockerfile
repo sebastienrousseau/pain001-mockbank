@@ -2,7 +2,10 @@
 FROM python:3.14-slim@sha256:caaf356f40667c496d405780745b9ac25771c189a51dfcc42430d531ea09f8a2 AS builder
 WORKDIR /app
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true PIP_DISABLE_PIP_VERSION_CHECK=1
-RUN pip install --no-cache-dir poetry==2.4.1
+# Poetry and its tree are hash-pinned (requirements/poetry.txt), as
+# OpenSSF Scorecard's Pinned-Dependencies check requires.
+COPY requirements/poetry.txt ./requirements/
+RUN pip install --no-cache-dir --require-hashes -r requirements/poetry.txt
 COPY pyproject.toml poetry.lock ./
 RUN poetry install --only main --all-extras --no-root --no-interaction
 COPY pain001_mockbank ./pain001_mockbank
