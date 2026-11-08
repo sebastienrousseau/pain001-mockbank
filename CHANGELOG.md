@@ -27,6 +27,8 @@
 - Score the supply chain with OpenSSF Scorecard weekly and on pushes to
   main, publishing results for the badge and uploading SARIF to code
   scanning, with every action pinned by commit SHA.
+- Check that every pull-request commit carries a `Signed-off-by` trailer
+  (DCO workflow, with the certificate text in `DCO.txt`).
 - Require Python 3.11 or newer, as the rest of the pain001 suite does;
   CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
   every one of them.
