@@ -1,0 +1,11 @@
+{
+  "pain001_mockbank/processor.py::make_reply": {
+    "cognitive": 34,
+    "cyclomatic": 24,
+    "lines": 88
+  },
+  "pain001_mockbank/rules.py::load_rules": {
+    "cognitive": 27,
+    "cyclomatic": 23
+  }
+}

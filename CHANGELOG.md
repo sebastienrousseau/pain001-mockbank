@@ -2,7 +2,7 @@
 
 # Changelog
 
-## [0.0.1] - Unreleased
+## [0.0.81]
 
 - Document the public development image and distinguish it from a release.
 
@@ -14,7 +14,29 @@
   with explicit maintainer authorization for recurring publication.
 - Floor the dev group's `certifi` at 2026.10.19 (PYSEC-2026-4320) and
   `filelock` at 4.2.1 (GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92,
-  GHSA-v4x8-3wr5-3wq8); pip-audit installs only on Python 3.11+, and
-  `make sec` says it skips pip-audit on 3.10.
+  GHSA-v4x8-3wr5-3wq8).
+- Require `pain001 >= 0.0.81, < 1`, the suite's lockstep floor;
+  `poetry.lock` moves pain001 from 0.0.74 to 0.0.81. Dependabot no
+  longer proposes pain001 bumps: the floor moves with each release.
+- Check that every restatement of the version (pyproject, `__version__`,
+  CHANGELOG, README) and the pain001 floor agree: `make versions`, run
+  by `make check` and by a `Version sources agree` workflow.
+- Check daily that the published pain001 suite agrees on one version
+  (`scripts/check_suite_consistency.py`, the family's script, and a
+  `Suite Consistency` workflow).
+- Score the supply chain with OpenSSF Scorecard weekly and on pushes to
+  main, publishing results for the badge and uploading SARIF to code
+  scanning, with every action pinned by commit SHA.
+- Check that every pull-request commit carries a `Signed-off-by` trailer
+  (DCO workflow, with the certificate text in `DCO.txt`).
+- Hold every function to the suite's complexity ceilings (cyclomatic
+  10, cognitive 15, Halstead difficulty 30, 60 lines; 500 per file)
+  with `make complexity`, against a committed baseline that may only
+  shrink. Two existing offenders are recorded: `make_reply` and
+  `load_rules`.
+- Require Python 3.11 or newer, as the rest of the pain001 suite does;
+  CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
+  every one of them.
 
-This initial development iteration is not a tagged release.
+pain001-mockbank was never tagged at 0.0.1, so, as a member of the
+pain001 suite, its first release ships at the family's version, 0.0.81.
