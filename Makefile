@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
-.PHONY: check lint type test sec docs
-check: lint type test docs
+.PHONY: check lint type test sec docs versions
+check: lint type test docs versions
 lint:
 	poetry run ruff check pain001_mockbank tests scripts
 	poetry run ruff format --check pain001_mockbank tests scripts
@@ -13,3 +13,5 @@ sec:
 	poetry run pip-audit --progress-spinner off
 docs:
 	poetry run python scripts/render_readme.py --check
+versions:
+	poetry run python scripts/verify_versions.py

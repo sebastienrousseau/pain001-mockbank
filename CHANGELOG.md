@@ -18,6 +18,9 @@
 - Require `pain001 >= 0.0.80, < 1`, the suite's lockstep floor;
   `poetry.lock` moves pain001 from 0.0.74 to 0.0.80. Dependabot no
   longer proposes pain001 bumps: the floor moves with each release.
+- Check that every restatement of the version (pyproject, `__version__`,
+  CHANGELOG, README) and the pain001 floor agree: `make versions`, run
+  by `make check` and by a `Version sources agree` workflow.
 - Require Python 3.11 or newer, as the rest of the pain001 suite does;
   CI runs 3.11, 3.12, 3.13 and 3.14, and `make sec` runs pip-audit on
   every one of them.
