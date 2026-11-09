@@ -1663,14 +1663,14 @@ files = [
 
 [[package]]
 name = "pain001"
-version = "0.0.81"
+version = "0.0.82"
 description = "Pain001 is a Python Library for Automating ISO 20022-Compliant Payment Files Using CSV Data."
 optional = false
 python-versions = "<4.0,>=3.11"
 groups = ["main"]
 files = [
-    {file = "pain001-0.0.81-py3-none-any.whl", hash = "sha256:cfac838349a10e1dd647c312bcb72187b2fcaf03f2184a015db4c54e0210bf2a"},
-    {file = "pain001-0.0.81.tar.gz", hash = "sha256:c316bda7f50aba094bc37696c2ab43e9a76f94baaa257eab79497453f23d68d7"},
+    {file = "pain001-0.0.82-py3-none-any.whl", hash = "sha256:599ce60fe84ed9d660ba159b4df014cd17a0ca576b45b26e9e91c04eac108dba"},
+    {file = "pain001-0.0.82.tar.gz", hash = "sha256:6cf16395a9b94a327d336f71d08d38bfdb7586af3d8b99d4550015b8b8abd014"},
 ]
 
 [package.dependencies]
@@ -2630,4 +2630,4 @@ rest = ["fastapi", "uvicorn"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "87ccdf05591747d5fac4d994e21c163321ad8743dd92e57e3f05feab55339afb"
+content-hash = "353152e1a546d75ebc40ed0640501c2ce3bed8763bfdc7d9070abd94e179257d"
