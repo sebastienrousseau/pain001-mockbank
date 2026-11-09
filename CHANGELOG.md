@@ -4,6 +4,20 @@
 
 ## [Unreleased]
 
+### Added
+
+- Answer pain.008 direct debits with a pain.002, as pain.001 credit
+  transfers are answered.
+- Add an `/archive` mailbox (`--archive`): a collected reply can be
+  renamed from `/outbox` into it, for example by
+  `pain001 download --after-fetch move:/archive`. No other rename across
+  mailboxes is allowed, and nothing is overwritten.
+
+### Changed
+
+- `make_reply` is split into parsing, amount and row helpers, which takes
+  it under the complexity ceilings and out of the baseline.
+
 ## [0.0.84] - 2026-11-09
 
 ### Added

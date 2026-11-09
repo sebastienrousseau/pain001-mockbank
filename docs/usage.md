@@ -12,10 +12,13 @@ poetry run pain001-mockbank --host-key mock_host_key --username synthetic \
 ```
 
 Default SFTP address: `127.0.0.1:2222`. Clients must trust the generated
-public host key explicitly. Send `.xml` files to `/inbox`; replies appear
-at `/outbox/<uploaded-name>.pain002.xml`. Direct uploads are processed at
-close. Staged `.tmp` uploads are processed after their final `.xml` rename.
-Open uploads cannot be renamed. Existing files are never overwritten.
+public host key explicitly. Send pain.001 or pain.008 `.xml` files to
+`/inbox`; replies appear at `/outbox/<uploaded-name>.pain002.xml`. Direct
+uploads are processed at close. Staged `.tmp` uploads are processed after
+their final `.xml` rename. Open uploads cannot be renamed. A collected reply
+can be renamed from `/outbox` into `/archive` (for example by
+`pain001 download --after-fetch move:/archive`); no other rename across
+mailboxes is allowed. Existing files are never overwritten.
 
 Rules accept `total_amount` comparisons (`>`, `>=`, `<`, `<=`, `==`) against
 decimal literals, or `any_iban_country == "XX"`. First match wins. Reactions

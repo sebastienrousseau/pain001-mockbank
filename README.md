@@ -145,7 +145,7 @@ Authenticated SFTP, explicit host keys, exclusive uploads, bounded mailbox stora
 
 ## Configuration
 
-Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox for simple directory names, and --rest-port to enable optional local reply history. Run --help for the generated option reference.
+Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox/--archive for simple directory names, and --rest-port to enable optional local reply history. Run --help for the generated option reference.
 
 ---
 

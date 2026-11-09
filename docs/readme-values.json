@@ -7,7 +7,7 @@
   "CAPABILITY_AREA": "Integration testing",
   "CAPABILITY_DESCRIPTION": "SFTP upload, conditional ACCP/RJCT/PDNG replies and optional REST history",
   "FEATURES_CONTENT": "Authenticated SFTP, explicit host keys, exclusive uploads, bounded mailbox storage, deterministic rule selection and pain.002 serialization delegated to core.",
-  "CONFIGURATION_CONTENT": "Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox for simple directory names, and --rest-port to enable optional local reply history. Run --help for the generated option reference.",
+  "CONFIGURATION_CONTENT": "Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox/--archive for simple directory names, and --rest-port to enable optional local reply history. Run --help for the generated option reference.",
   "EXAMPLES_CONTENT": "See [rules.yaml](examples/rules.yaml) and the [container guide](docs/usage.md).",
   "LIMITATIONS_CONTENT": "Do not use for real payments, settlement simulation, production bank authentication, or mixed-currency total calculations. It is a test fixture, not a bank.",
   "SECURITY_CONTENT": "Use only synthetic data. Credentials and host keys are explicit; bind to loopback and do not expose the optional unauthenticated REST view publicly. YAML has no executable expressions, XML DTDs are refused, and uploads are limited to 8 MiB.",
