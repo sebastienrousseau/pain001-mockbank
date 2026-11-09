@@ -2,6 +2,12 @@
 
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Audit all nine suite repositories and their publication channels daily and after publishing workflows, using the shared checker pinned to a core commit.
+
 ## [0.0.83] - 2026-11-09
 
 - Require `pain001 >= 0.0.83, < 1`, the suite's lockstep floor;
