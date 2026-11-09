@@ -4,6 +4,7 @@
 import json
 import re
 import sys
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,7 +71,7 @@ STATIC_DEFAULTS = {
         "[Family map](https://github.com/sebastienrousseau/pain001)"
     ),
     "STABILITY_CONTENT": (
-        "Version 0.0.83, in lockstep with the pain001 suite. "
+        "Version {version}, in lockstep with the pain001 suite. "
         "Maintainers open each next iteration explicitly, one 0.0.1 "
         "step at a time. Output changes and "
         "contract changes require review; no stable public API or "
@@ -89,10 +90,16 @@ STATIC_DEFAULTS = {
 def render() -> str:
     """Fill every canonical placeholder without changing the layout."""
     values = json.loads((ROOT / "docs/readme-values.json").read_text())
+    version = tomllib.loads((ROOT / "pyproject.toml").read_text())["tool"][
+        "poetry"
+    ]["version"]
     project = values["PROJECT_NAME"]
     repo = f"https://github.com/sebastienrousseau/{project}"
     defaults = {
         **STATIC_DEFAULTS,
+        "STABILITY_CONTENT": STATIC_DEFAULTS["STABILITY_CONTENT"].format(
+            version=version
+        ),
         "PROJECT_NAME_LOWER": project,
         "REPO_URL": repo,
         "REPO_DOMAIN_AND_PATH": f"github.com/sebastienrousseau/{project}",

@@ -4,9 +4,20 @@
 
 ## [Unreleased]
 
+## [0.0.84] - 2026-11-09
+
 ### Added
 
 - Audit all nine suite repositories and their publication channels daily and after publishing workflows, using the shared checker pinned to a core commit.
+
+### Changed
+
+- Release 0.0.84 with the suite and require core pain001 0.0.84. Regenerate dependency locks from the published core artifacts.
+
+
+### Fixed
+
+- Emit the existing Apache-2.0 OR MIT licence as a PEP 639 expression. Remove the erroneous proprietary classifier produced by legacy Poetry metadata.
 
 ## [0.0.83] - 2026-11-09
 
