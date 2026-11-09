@@ -17,6 +17,8 @@
 
 ### Fixed
 
+- Include the declared licence files and README in the container build context before package installation.
+
 - Include the generated README as the wheel and source distribution description, with its Markdown content type.
 
 - Emit the existing Apache-2.0 OR MIT licence as a PEP 639 expression. Remove the erroneous proprietary classifier produced by legacy Poetry metadata.
