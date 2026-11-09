@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
 [tool.poetry]
 name = "pain001-mockbank"
-version = "0.0.81"
+version = "0.0.82"
 description = "Synthetic SFTP payment acknowledgements for integration tests."
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
 license = "Apache-2.0 OR MIT"
@@ -9,7 +9,7 @@ packages = [{include = "pain001_mockbank"}]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
-pain001 = ">=0.0.81,<1"
+pain001 = ">=0.0.82,<1"
 asyncssh = ">=2.24,<3"
 pyyaml = ">=6,<7"
 defusedxml = ">=0.7,<1"

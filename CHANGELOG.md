@@ -2,6 +2,17 @@
 
 # Changelog
 
+## [0.0.82] - 2026-11-09
+
+- Require `pain001 >= 0.0.82, < 1`, the suite's lockstep floor;
+  `poetry.lock` moves pain001 from 0.0.81 to 0.0.82. The pain.002
+  builder the mock bank calls is unchanged in the core.
+- Point the README's Build badge at this repository's CI workflow;
+  shields.io answered "repo or workflow not found" because the badge
+  named a domain-and-path instead of `owner/repo`.
+- Show the README logo on GitHub's dark theme, and restyle the logo
+  and badge row.
+
 ## [0.0.81] - 2026-11-08
 
 - Install the image build's Poetry from a hash-pinned tree
