@@ -2,6 +2,13 @@
 
 # Changelog
 
+## [0.0.83] - 2026-11-09
+
+- Require `pain001 >= 0.0.83, < 1`, the suite's lockstep floor;
+  `poetry.lock` moves pain001 from 0.0.82 to 0.0.83. The pain.002
+  builder the mock bank calls is unchanged in the core; its 0.0.83
+  changes are to XML signing and signature verification.
+
 ## [0.0.82] - 2026-11-09
 
 - Include the README, documentation sources, changelog and release notes in

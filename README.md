@@ -67,7 +67,7 @@ Each pain001 suite release, from 0.0.81, publishes a versioned image for
 linux/amd64 and linux/arm64, signed with cosign and never moved:
 
 ```sh
-docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.82
+docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.83
 ```
 
 The release's `image.txt` names it by digest. Development images are
@@ -188,7 +188,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Stability guarantees
 
-Version 0.0.82, in lockstep with the pain001 suite. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
+Version 0.0.83, in lockstep with the pain001 suite. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
 
 ---
 
