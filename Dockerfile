@@ -6,7 +6,7 @@ ENV POETRY_VIRTUALENVS_IN_PROJECT=true PIP_DISABLE_PIP_VERSION_CHECK=1
 # OpenSSF Scorecard's Pinned-Dependencies check requires.
 COPY requirements/poetry.txt ./requirements/
 RUN pip install --no-cache-dir --require-hashes -r requirements/poetry.txt
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock README.md LICENSE LICENSE-APACHE LICENSE-MIT ./
 RUN poetry install --only main --all-extras --no-root --no-interaction
 COPY pain001_mockbank ./pain001_mockbank
 RUN poetry install --only-root --no-interaction
