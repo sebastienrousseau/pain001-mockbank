@@ -6,6 +6,12 @@ description = "Synthetic SFTP payment acknowledgements for integration tests."
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
 license = "Apache-2.0 OR MIT"
 packages = [{include = "pain001_mockbank"}]
+include = [
+    {path = "README.md", format = "sdist"},
+    {path = "docs", format = "sdist"},
+    {path = "CHANGELOG.md", format = "sdist"},
+    {path = "releases", format = "sdist"},
+]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"

@@ -4,6 +4,8 @@
 
 ## [0.0.82] - 2026-11-09
 
+- Include the README, documentation sources, changelog and release notes in
+  the source distribution.
 - Require `pain001 >= 0.0.82, < 1`, the suite's lockstep floor;
   `poetry.lock` moves pain001 from 0.0.81 to 0.0.82. The pain.002
   builder the mock bank calls is unchanged in the core.
