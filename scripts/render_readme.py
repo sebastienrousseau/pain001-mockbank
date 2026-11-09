@@ -70,7 +70,7 @@ STATIC_DEFAULTS = {
         "[Family map](https://github.com/sebastienrousseau/pain001)"
     ),
     "STABILITY_CONTENT": (
-        "Version 0.0.82, in lockstep with the pain001 suite. "
+        "Version 0.0.83, in lockstep with the pain001 suite. "
         "Maintainers open each next iteration explicitly, one 0.0.1 "
         "step at a time. Output changes and "
         "contract changes require review; no stable public API or "
