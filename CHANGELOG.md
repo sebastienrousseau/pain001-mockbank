@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Answer each payment block with one `OrgnlPmtInfAndSts` holding all of
+  its transactions. 0.0.85 wrote one block per transaction, each
+  repeating the block's id. Needs core pain001 0.0.86, whose pain.002
+  builder takes a `transactions` list; the floor moves to 0.0.86 once
+  it is published.
+
 ## [0.0.85] - 2026-11-10
 
 ### Added
