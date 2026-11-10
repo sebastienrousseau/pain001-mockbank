@@ -6,6 +6,10 @@
 
 ### Added
 
+- Run the README Quick Start in the test suite (generate the host key,
+  start the server, upload over SFTP, read the pain.002) and add
+  `examples/upload_and_collect.py`, an in-process SFTP walkthrough
+  that the suite runs and `make lint` checks.
 - Add issue forms, a pull request template, CITATION.cff and a
   markdownlint CI job (`docs-lint.yml`, configured in
   `.markdownlint-cli2.jsonc`).
