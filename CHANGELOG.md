@@ -17,7 +17,8 @@
 
 ### Changed
 
-- Release 0.0.85 in lockstep with the pain001 suite.
+- Release 0.0.85 in lockstep with the pain001 suite and require core
+  pain001 0.0.85; the locks resolve its published artifacts.
 - `make_reply` is split into parsing, amount and row helpers, which takes
   it under the complexity ceilings and out of the baseline.
 
