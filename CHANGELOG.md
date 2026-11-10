@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.85] - 2026-11-10
+
 ### Added
 
 - Answer pain.008 direct debits with a pain.002, as pain.001 credit
@@ -15,6 +17,7 @@
 
 ### Changed
 
+- Release 0.0.85 in lockstep with the pain001 suite.
 - `make_reply` is split into parsing, amount and row helpers, which takes
   it under the complexity ceilings and out of the baseline.
 
