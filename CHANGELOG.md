@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add issue forms, a pull request template, CITATION.cff and a
+  markdownlint CI job (`docs-lint.yml`, configured in
+  `.markdownlint-cli2.jsonc`).
+
 ### Fixed
 
 - Answer each payment block with one `OrgnlPmtInfAndSts` holding all of
