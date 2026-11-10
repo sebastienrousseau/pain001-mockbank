@@ -33,6 +33,7 @@ def test_run_lifecycle(monkeypatch, tmp_path, rest):
         rules=rules if rest else None,
         inbox="inbox",
         outbox="outbox",
+        archive="archive",
         host_key=key,
         password_env="MOCKBANK_PASSWORD",
         username="user",

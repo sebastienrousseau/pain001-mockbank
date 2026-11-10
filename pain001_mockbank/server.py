@@ -18,7 +18,11 @@ from pain001_mockbank.rules import Rule, load_rules
 
 
 class Bank:
-    """Own an isolated inbox, outbox and bounded in-memory reply history."""
+    """Own an isolated inbox, outbox, archive and bounded reply history.
+
+    A client archives a reply it has collected by renaming it from the
+    outbox into the archive, as a bank's SFTP service often allows.
+    """
 
     def __init__(
         self,
@@ -26,20 +30,24 @@ class Bank:
         rules: list[Rule],
         inbox: str = "inbox",
         outbox: str = "outbox",
+        archive: str = "archive",
     ) -> None:
+        names = (inbox, outbox, archive)
         if (
-            any(not name.isidentifier() for name in (inbox, outbox))
-            or inbox == outbox
+            any(not name.isidentifier() for name in names)
+            or len(set(names)) != 3
         ):
             raise ValueError(
-                "Inbox and outbox must be distinct simple directory names"
+                "Inbox, outbox and archive must be distinct simple "
+                "directory names"
             )
         self.root = root.resolve()
         self.inbox = self.root / inbox
         self.outbox = self.root / outbox
+        self.archive = self.root / archive
         self.rules = rules
         self.replies: deque[dict[str, str]] = deque(maxlen=100)
-        for directory in (self.inbox, self.outbox):
+        for directory in (self.inbox, self.outbox, self.archive):
             directory.mkdir(parents=True, exist_ok=True)
             if directory.is_symlink():
                 raise ValueError("Mailbox directories must not be symlinks")
@@ -95,8 +103,9 @@ class PaymentSFTP(asyncssh.SFTPServer):
     def _path(self, path: bytes, *, write: bool = False) -> Path:
         """Confine a flat filename to the configured mailbox directories."""
         result = Path(os.fsdecode(self.map_path(path))).resolve()
+        bank = self.bank
         allowed = (
-            {self.bank.inbox} if write else {self.bank.inbox, self.bank.outbox}
+            {bank.inbox} if write else {bank.inbox, bank.outbox, bank.archive}
         )
         if result.parent not in allowed or result.is_symlink():
             raise asyncssh.SFTPPermissionDenied(
@@ -160,7 +169,17 @@ class PaymentSFTP(asyncssh.SFTPServer):
             self._publish(path)
 
     def rename(self, oldpath: bytes, newpath: bytes) -> None:
-        """Publish with a no-clobber hard-link operation in the same inbox."""
+        """Publish within the inbox, or archive a reply; never overwrite.
+
+        An inbox rename publishes the finished upload. An outbox reply
+        may move into the archive, which publishes nothing. Any other
+        pair is refused.
+        """
+        old, new = self._path(oldpath), self._path(newpath)
+        if (old.parent, new.parent) == (self.bank.outbox, self.bank.archive):
+            os.link(old, new)
+            old.unlink()
+            return
         old = self._path(oldpath, write=True)
         new = self._path(newpath, write=True)
         if old in self.writing.values():
@@ -236,7 +255,7 @@ async def run(args: argparse.Namespace) -> None:
         if args.rules
         else []
     )
-    bank = Bank(args.root, rules, args.inbox, args.outbox)
+    bank = Bank(args.root, rules, args.inbox, args.outbox, args.archive)
     key = asyncssh.read_private_key(args.host_key)
     password = os.environ.get(args.password_env, "")
     async with await start_server(
@@ -266,5 +285,6 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=2222)
     parser.add_argument("--inbox", default="inbox")
     parser.add_argument("--outbox", default="outbox")
+    parser.add_argument("--archive", default="archive")
     parser.add_argument("--rest-port", type=int)
     asyncio.run(run(parser.parse_args()))

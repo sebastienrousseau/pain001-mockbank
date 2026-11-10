@@ -307,3 +307,74 @@ def test_sftp_failure_paths(tmp_path):
     staged.write_bytes(PAYMENT)
     server.posix_rename(b"/inbox/0", b"/inbox/final.xml")
     assert (bank.outbox / "final.xml.pain002.xml").is_file()
+
+
+DIRECT_DEBIT = (
+    PAYMENT.replace(b"pain.001.001.03", b"pain.008.001.02")
+    .replace(b"CstmrCdtTrfInitn", b"CstmrDrctDbtInitn")
+    .replace(b"CdtTrfTxInf", b"DrctDbtTxInf")
+    .replace(b"DbtrAcct", b"CdtrAcct")
+    # A direct debit carries InstdAmt directly, with no Amt wrapper.
+    .replace(b"<Amt>", b"")
+    .replace(b"</Amt>", b"")
+)
+
+
+@pytest.mark.parametrize(
+    "payload,status",
+    [
+        (DIRECT_DEBIT, "ACCP"),
+        (DIRECT_DEBIT.replace(b"100.00", b"2000000.00"), "RJCT"),
+    ],
+)
+def test_direct_debits_are_answered(payload, status):
+    """A pain.008 gets a pain.002 naming it, like a credit transfer."""
+    root = ET.fromstring(make_reply(payload, load_rules(RULES)))
+    assert root.findtext(".//{*}OrgnlMsgNmId") == "pain.008.001.02"
+    assert root.findtext(".//{*}OrgnlEndToEndId") == "END-1"
+    assert root.findtext(".//{*}GrpSts") == status
+
+
+def test_a_direct_debit_needs_transactions():
+    empty = DIRECT_DEBIT.split(b"<DrctDbtTxInf>")[0] + (
+        b"</PmtInf></CstmrDrctDbtInitn></Document>"
+    )
+    with pytest.raises(ValueError, match="no transactions"):
+        make_reply(empty, [])
+
+
+def test_replies_move_to_the_archive_only(tmp_path):
+    """outbox -> archive is allowed, never overwrites, publishes nothing."""
+    bank = Bank(tmp_path, [])
+    server = PaymentSFTP(Mock(), bank)
+    reply = bank.outbox / "payment.xml.pain002.xml"
+    reply.write_bytes(b"<reply/>")
+    server.rename(
+        b"/outbox/payment.xml.pain002.xml",
+        b"/archive/payment.xml.pain002.xml",
+    )
+    assert not reply.exists()
+    assert (bank.archive / "payment.xml.pain002.xml").read_bytes() == (
+        b"<reply/>"
+    )
+    assert list(bank.outbox.iterdir()) == []
+    reply.write_bytes(b"<again/>")
+    with pytest.raises(FileExistsError):
+        server.rename(
+            b"/outbox/payment.xml.pain002.xml",
+            b"/archive/payment.xml.pain002.xml",
+        )
+    for old, new in [
+        (b"/outbox/payment.xml.pain002.xml", b"/inbox/x.xml"),
+        (b"/archive/payment.xml.pain002.xml", b"/outbox/x.xml"),
+        (b"/inbox/x.xml", b"/archive/x.xml"),
+    ]:
+        with pytest.raises(asyncssh.SFTPPermissionDenied):
+            server.rename(old, new)
+    server.remove(b"/archive/payment.xml.pain002.xml")
+    assert list(bank.archive.iterdir()) == []
+
+
+def test_the_archive_must_be_its_own_directory(tmp_path):
+    with pytest.raises(ValueError):
+        Bank(tmp_path, [], "inbox", "outbox", "outbox")
