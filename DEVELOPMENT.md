@@ -43,7 +43,8 @@ the authority.
 
 `make check` is the gate to run before every push. It runs, in order:
 `lint` (ruff check and ruff format over the package, tests, scripts,
-fuzz harness and examples), `type` (mypy strict), `complexity`, `test`
+fuzz harness and examples, plus the pydocstyle rules on the package and
+examples), `type` (mypy strict), `complexity`, `test`
 (pytest with the 100% line and branch coverage floor), `docs` (the
 README is current and follows the portfolio template) and `versions`
 (every version restatement agrees). `make sec` runs bandit and
@@ -110,6 +111,10 @@ A bug fix comes with a test that failed before the fix.
 - `.github/demo.gif`, the README demo, is rendered by `make demo` (needs
   [vhs](https://github.com/charmbracelet/vhs)) from `.github/demo.tape`.
   Re-render it in the same change when its output changes.
+- Every public module, class, method and function in the package and
+  the examples has a docstring: `make lint` runs ruff's pydocstyle rules
+  (`D`, Google convention) over them. `pain001-mockbank --help` is the
+  option reference; a test fails when an option has no help text.
 
 ## Release model
 

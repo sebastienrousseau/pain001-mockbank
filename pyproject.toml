@@ -72,6 +72,12 @@ line-length = 79
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
 
+# `make lint` adds the pydocstyle rules (D) for the package and the
+# examples, so every public module, class and function is documented.
+# Tests and the vendored suite scripts are not held to them.
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--cov=pain001_mockbank --cov-branch --cov-report=term-missing --cov-fail-under=100"

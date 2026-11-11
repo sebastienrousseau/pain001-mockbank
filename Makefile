@@ -4,6 +4,7 @@ check: lint type complexity test docs versions
 lint:
 	poetry run ruff check pain001_mockbank tests scripts fuzz examples
 	poetry run ruff format --check pain001_mockbank tests scripts fuzz examples
+	poetry run ruff check --extend-select D pain001_mockbank examples
 type:
 	poetry run mypy pain001_mockbank
 complexity:

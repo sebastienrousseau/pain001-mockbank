@@ -19,9 +19,17 @@
   the test layout and release model.
 - Spell-check the tree with codespell 2.4.1 (hash-pinned in
   `requirements/docs-lint.txt`) in the docs-lint workflow.
+- Add issue forms, a pull request template, CITATION.cff and a
+  markdownlint CI job (`docs-lint.yml`, configured in
+  `.markdownlint-cli2.jsonc`).
 
 ### Changed
 
+- `pain001-mockbank --help` describes every option and its default; a
+  test fails on an option without help text. `make lint` holds the
+  package and examples to ruff's pydocstyle rules (Google convention),
+  which added the three missing `__init__` docstrings. The demo is
+  re-rendered with the new help.
 - The README follows the portfolio template exactly: a demo
   (`.github/demo.gif`, rendered from `.github/demo.tape` by `make demo`)
   under the badges, the template's Build badge, an Examples section
@@ -29,13 +37,9 @@
   the architecture page. `render_readme.py --check` (in `make docs`)
   now also fails on a heading out of the template's order or an
   unresolved `{{...}}` token.
-
 - `SECURITY.md` follows the suite's layout: reporting channels, the
   suite's response goals, threat model and hardening. The code of
-  conduct is the suite's shared text.
-- Add issue forms, a pull request template, CITATION.cff and a
-  markdownlint CI job (`docs-lint.yml`, configured in
-  `.markdownlint-cli2.jsonc`).
+  conduct is the suite's shared Contributor Covenant text.
 
 ### Fixed
 

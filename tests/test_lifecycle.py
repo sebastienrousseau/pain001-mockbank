@@ -88,3 +88,12 @@ def test_manually_constructed_bad_rule():
     """Bypassing the YAML parser cannot execute an invalid condition."""
     with pytest.raises(ValueError, match="not validated"):
         Rule("unsafe()", "RJCT", "NARR", "test").matches(Decimal(1), set())
+
+
+def test_every_option_is_documented_in_help():
+    """--help explains each option, not just its name."""
+    parser = server._parser()
+    undocumented = [
+        action.dest for action in parser._actions if not action.help
+    ]
+    assert undocumented == []
