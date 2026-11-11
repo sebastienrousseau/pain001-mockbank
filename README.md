@@ -11,12 +11,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-mockbank/ci.yml?branch=main&style=for-the-badge&logo=github" alt="Build" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-mockbank/ci.yml?style=for-the-badge&logo=github" alt="Build" height="28" /></a>
   <a href="https://github.com/sebastienrousseau/pain001-mockbank/pkgs/container/pain001-mockbank"><img src="https://img.shields.io/badge/distribution-GHCR-fc8d62?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" height="28" /></a>
   <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-mockbank?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
   <a href="https://github.com/sebastienrousseau/pain001-mockbank/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" height="28" /></a>
+</p>
+
+<p align="center">
+  <img src=".github/demo.gif" alt="pain001-mockbank --help, then examples/upload_and_collect.py uploading two synthetic payments over SFTP and printing ACCP and RJCT" width="100%" />
 </p>
 
 ---
@@ -151,7 +155,7 @@ Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox/--ar
 
 ## Examples
 
-See [rules.yaml](examples/rules.yaml) and the [container guide](docs/usage.md).
+[upload_and_collect.py](examples/upload_and_collect.py) starts the bank in process, uploads a payment under the example rules' limit and one over it, and prints ACCP and RJCT. Run it with `poetry run python examples/upload_and_collect.py`. [rules.yaml](examples/rules.yaml) is the rules file it uses; the [container guide](docs/usage.md) runs the image.
 
 ---
 
@@ -166,9 +170,10 @@ Do not use for real payments, settlement simulation, production bank authenticat
 ```bash
 poetry install --all-extras
 poetry run make check
+poetry run make sec
 ```
 
-Tests use synthetic records. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift.
+Coverage is gated at 100% line and branch, and the tests run the Quick Start and every example. Tests use synthetic records. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift and any departure from the portfolio template. [DEVELOPMENT.md](DEVELOPMENT.md) reproduces every CI gate.
 
 ---
 
@@ -182,7 +187,7 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Documentation
 
-[User manual](docs/usage.md) · [API and contract reference](docs/usage.md) · [Developer guide](DEVELOPMENT.md) · [Family map](https://github.com/sebastienrousseau/pain001)
+[User manual](docs/usage.md) · [API and contract reference](docs/ARCHITECTURE.md) · [Developer guide](DEVELOPMENT.md) · [Family map](https://github.com/sebastienrousseau/pain001)
 
 ---
 

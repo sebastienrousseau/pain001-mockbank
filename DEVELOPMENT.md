@@ -45,7 +45,7 @@ the authority.
 `lint` (ruff check and ruff format over the package, tests, scripts,
 fuzz harness and examples), `type` (mypy strict), `complexity`, `test`
 (pytest with the 100% line and branch coverage floor), `docs` (the
-README is current) and `versions`
+README is current and follows the portfolio template) and `versions`
 (every version restatement agrees). `make sec` runs bandit and
 pip-audit.
 
@@ -92,7 +92,7 @@ improvement, never to absorb a regression.
   harness without Atheris, so the harness stays runnable.
 - `test_check_complexity.py`, `test_verify_versions.py`,
   `test_release_notes.py`, `test_check_suite_consistency.py`,
-  `test_readme_badges.py` and `test_logo.py`
+  `test_readme_badges.py`, `test_render_readme.py` and `test_logo.py`
   cover the scripts and the generated README.
 
 A bug fix comes with a test that failed before the fix.
@@ -105,7 +105,11 @@ A bug fix comes with a test that failed before the fix.
 - `README.md` is rendered from `docs/readme-template.md` (the
   portfolio's canonical layout) and `docs/readme-values.json`: edit the
   values, then run `poetry run python scripts/render_readme.py`.
-  `--check`, run by `make docs`, fails on drift.
+  `--check`, run by `make docs`, fails on drift, on a heading out of the
+  template's order and on an unresolved `{{...}}` token.
+- `.github/demo.gif`, the README demo, is rendered by `make demo` (needs
+  [vhs](https://github.com/charmbracelet/vhs)) from `.github/demo.tape`.
+  Re-render it in the same change when its output changes.
 
 ## Release model
 

@@ -22,6 +22,14 @@
 
 ### Changed
 
+- The README follows the portfolio template exactly: a demo
+  (`.github/demo.gif`, rendered from `.github/demo.tape` by `make demo`)
+  under the badges, the template's Build badge, an Examples section
+  naming the runnable example, and the Documentation links pointing at
+  the architecture page. `render_readme.py --check` (in `make docs`)
+  now also fails on a heading out of the template's order or an
+  unresolved `{{...}}` token.
+
 - `SECURITY.md` follows the suite's layout: reporting channels, the
   suite's response goals, threat model and hardening. The code of
   conduct is the suite's shared text.

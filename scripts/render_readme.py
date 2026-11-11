@@ -1,5 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
-"""Render the portfolio's canonical README layout from reviewed evidence."""
+"""Render the portfolio's canonical README layout from reviewed evidence.
+
+``--check`` fails when the committed README differs from the rendering,
+when its section headings leave the portfolio template's order
+(``~/Code/README-TEMPLATE.md``, mirrored in ``docs/readme-template.md``),
+or when a ``{{...}}`` token is left unresolved.
+"""
 
 import json
 import re
@@ -8,6 +14,28 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+#: The portfolio template's headings, in order. "{name}" is the project.
+CANONICAL_HEADINGS = (
+    "## Contents",
+    "## Install",
+    "### As a Python library",
+    "## Requirements",
+    "## Quick Start",
+    "## The {name} ecosystem",
+    "## Capabilities at a glance",
+    "## Ecosystem comparison",
+    "## Benchmarks",
+    "## Features",
+    "## Configuration",
+    "## Examples",
+    "## When not to use {name}",
+    "## Development",
+    "## Security",
+    "## Documentation",
+    "## Stability guarantees",
+    "## License",
+)
 
 #: Placeholders that do not depend on the project name.
 STATIC_DEFAULTS = {
@@ -57,16 +85,20 @@ STATIC_DEFAULTS = {
     "BENCHMARK_RESULT": "Not measured",
     "BENCHMARK_ENVIRONMENT": "Not applicable",
     "DEVELOPMENT_COMMANDS": (
-        "poetry install --all-extras\npoetry run make check"
+        "poetry install --all-extras\npoetry run make check\n"
+        "poetry run make sec"
     ),
     "DEVELOPMENT_CONTENT": (
-        "Tests use synthetic records. README changes come from "
-        "docs/readme-values.json and scripts/render_readme.py; "
-        "CI rejects drift."
+        "Coverage is gated at 100% line and branch, and the tests run "
+        "the Quick Start and every example. Tests use synthetic records. "
+        "README changes come from docs/readme-values.json and "
+        "scripts/render_readme.py; CI rejects drift and any departure "
+        "from the portfolio template. "
+        "[DEVELOPMENT.md](DEVELOPMENT.md) reproduces every CI gate."
     ),
     "DOCUMENTATION_INDEX": (
         "[User manual](docs/usage.md) · "
-        "[API and contract reference](docs/usage.md) · "
+        "[API and contract reference](docs/ARCHITECTURE.md) · "
         "[Developer guide](DEVELOPMENT.md) · "
         "[Family map](https://github.com/sebastienrousseau/pain001)"
     ),
@@ -104,7 +136,7 @@ def render() -> str:
         "REPO_URL": repo,
         "REPO_DOMAIN_AND_PATH": f"github.com/sebastienrousseau/{project}",
         # Shields wants owner/repo for a workflow badge, without the host.
-        "GITHUB_REPO": f"sebastienrousseau/{project}",
+        "REPO_SLUG": f"sebastienrousseau/{project}",
         "REGISTRY_URL": repo,
         "INSTALL_LIBRARY_SNIPPET": (
             f"git clone {repo}.git\ncd {project}\npoetry install --all-extras"
@@ -117,6 +149,33 @@ def render() -> str:
     )
 
 
+def headings(text: str) -> list[str]:
+    """Return the level-2 and level-3 headings outside code fences."""
+    found, fenced = [], False
+    for line in text.splitlines():
+        if line.startswith("```"):
+            fenced = not fenced
+        elif not fenced and re.match(r"#{2,3} ", line):
+            found.append(line.rstrip())
+    return found
+
+
+def structure_problems(text: str, name: str) -> list[str]:
+    """Return every way text departs from the canonical README shape."""
+    expected = [heading.format(name=name) for heading in CANONICAL_HEADINGS]
+    problems = []
+    actual = headings(text)
+    if actual != expected:
+        problems.append(
+            "headings differ from the portfolio template:\n"
+            f"  expected {expected}\n  found    {actual}"
+        )
+    tokens = sorted(set(re.findall(r"\{\{[^}]*\}\}", text)))
+    if tokens:
+        problems.append(f"unresolved template tokens: {tokens}")
+    return problems
+
+
 def main() -> None:
     """Write README.md or check that committed output is current."""
     rendered = render()
@@ -126,6 +185,12 @@ def main() -> None:
             raise SystemExit(
                 "README.md is stale: run scripts/render_readme.py"
             )
+        name = json.loads((ROOT / "docs/readme-values.json").read_text())[
+            "PROJECT_NAME"
+        ]
+        problems = structure_problems(rendered, name)
+        if problems:
+            raise SystemExit("README structure:\n" + "\n".join(problems))
     else:
         target.write_text(rendered, encoding="utf-8")
 
