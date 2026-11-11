@@ -29,30 +29,30 @@
 
 **Getting started**
 
-- [Install](#install) — source checkout and locked dependencies
-- [Requirements](#requirements) — toolchain floor, platforms
-- [Quick Start](#quick-start) — start a local synthetic bank
+- [Install](#install): source checkout and locked dependencies
+- [Requirements](#requirements): toolchain floor, platforms
+- [Quick Start](#quick-start): start a local synthetic bank
 
 **The pain001-mockbank ecosystem**
 
-- [The pain001-mockbank ecosystem](#the-pain001-mockbank-ecosystem) — core library and this companion
+- [The pain001-mockbank ecosystem](#the-pain001-mockbank-ecosystem): core library and this companion
 
 **Library reference**
 
-- [Capabilities at a glance](#capabilities-at-a-glance) — the current surface by theme
-- [Ecosystem comparison](#ecosystem-comparison) — short matrix; full table at [`docs/COMPARISON.md`](docs/COMPARISON.md)
-- [Benchmarks](#benchmarks) — headline numbers; full table at [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)
-- [Features](#features) — module-level capability list
-- [Configuration](#configuration) — core options
-- [Examples](#examples) — runnable example index
+- [Capabilities at a glance](#capabilities-at-a-glance): the current surface by theme
+- [Ecosystem comparison](#ecosystem-comparison): short matrix; full table at [`docs/COMPARISON.md`](docs/COMPARISON.md)
+- [Benchmarks](#benchmarks): headline numbers; full table at [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)
+- [Features](#features): module-level capability list
+- [Configuration](#configuration): core options
+- [Examples](#examples): runnable example index
 
 **Operational**
 
-- [When not to use pain001-mockbank](#when-not-to-use-pain001-mockbank) — limitations
-- [Development](#development) — make targets, fuzzing, CI
-- [Security](#security) — guarantees and compliance
-- [Documentation](#documentation) — all reference docs
-- [Stability guarantees](#stability-guarantees) — SemVer axis, output stability, minimum toolchain discipline
+- [When not to use pain001-mockbank](#when-not-to-use-pain001-mockbank): limitations
+- [Development](#development): make targets, fuzzing, CI
+- [Security](#security): guarantees and compliance
+- [Documentation](#documentation): all reference docs
+- [Stability guarantees](#stability-guarantees): SemVer axis, output stability, minimum toolchain discipline
 - [License](#license)
 
 ---
