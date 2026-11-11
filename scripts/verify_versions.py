@@ -10,6 +10,7 @@ must appear as:
 * a ``## [X.Y.Z]`` heading in ``CHANGELOG.md``;
 * the "Version X.Y.Z, in lockstep" stability line in ``README.md``,
   rendered from ``scripts/render_readme.py``;
+* ``version`` in ``CITATION.cff``;
 * the ``pain001 >=`` floor in ``pyproject.toml``.
 
 The pain001 suite releases together at one version, core first, so the
@@ -78,6 +79,14 @@ def _readme(root: Path, expected: str) -> list[str]:
     return [f"README.md: stability section names version {found}"]
 
 
+def _citation(root: Path, expected: str) -> list[str]:
+    pattern = r'^version:\s*"?([^"\s]+)"?'
+    found = _search(pattern, _read(root, "CITATION.cff"))
+    if found == expected:
+        return []
+    return [f"CITATION.cff: version is {found}"]
+
+
 def _pain001_floor(root: Path, expected: str) -> list[str]:
     floors = _FLOOR.findall(_read(root, "pyproject.toml"))
     if not floors:
@@ -92,7 +101,7 @@ def _pain001_floor(root: Path, expected: str) -> list[str]:
 def problems(root: Path = ROOT) -> list[str]:
     """Every restatement of the version that disagrees with pyproject."""
     expected = pyproject_version(root)
-    checks = (_dunder, _changelog, _readme, _pain001_floor)
+    checks = (_dunder, _changelog, _readme, _citation, _pain001_floor)
     return [problem for check in checks for problem in check(root, expected)]
 
 

@@ -31,6 +31,7 @@ TREE = {
     "pain001_mockbank/__init__.py": f'__version__ = "{VERSION}"\n',
     "CHANGELOG.md": f"# Changelog\n\n## [{VERSION}]\n\n- Something.\n",
     "README.md": f"Version {VERSION}, in lockstep with the pain001 suite.\n",
+    "CITATION.cff": f'cff-version: 1.2.0\nversion: "{VERSION}"\n',
 }
 
 
@@ -83,6 +84,11 @@ def test_a_stale_readme_fails(tree: Path) -> None:
     assert _script().problems(tree) == [
         "README.md: stability section names version 0.0.1"
     ]
+
+
+def test_a_stale_citation_fails(tree: Path) -> None:
+    _rewrite(tree / "CITATION.cff", f'"{VERSION}"', '"0.0.1"')
+    assert _script().problems(tree) == ["CITATION.cff: version is 0.0.1"]
 
 
 def test_a_pain001_floor_below_the_release_fails(tree: Path) -> None:

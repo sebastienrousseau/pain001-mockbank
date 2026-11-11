@@ -10,6 +10,7 @@
   start the server, upload over SFTP, read the pain.002) and add
   `examples/upload_and_collect.py`, an in-process SFTP walkthrough
   that the suite runs and `make lint` checks.
+- `make versions` also checks the `version` in `CITATION.cff`.
 - Add issue forms, a pull request template, CITATION.cff and a
   markdownlint CI job (`docs-lint.yml`, configured in
   `.markdownlint-cli2.jsonc`).
