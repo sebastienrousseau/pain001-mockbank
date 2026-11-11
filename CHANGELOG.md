@@ -27,7 +27,8 @@
 
 ### Changed
 
-- Release 0.0.86 in lockstep with the pain001 suite.
+- Release 0.0.86 in lockstep with the pain001 suite and require core
+  pain001 0.0.86; the locks resolve its published artifacts.
 - `pain001-mockbank --help` describes every option and its default; a
   test fails on an option without help text. `make lint` holds the
   package and examples to ruff's pydocstyle rules (Google convention),
@@ -62,8 +63,7 @@
 - Answer each payment block with one `OrgnlPmtInfAndSts` holding all of
   its transactions. 0.0.85 wrote one block per transaction, each
   repeating the block's id. Needs core pain001 0.0.86, whose pain.002
-  builder takes a `transactions` list; the floor moves to 0.0.86 once
-  it is published.
+  builder takes a `transactions` list, and the floor is now 0.0.86.
 
 ## [0.0.85] - 2026-11-10
 

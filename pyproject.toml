@@ -26,7 +26,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
-pain001 = ">=0.0.85,<1"
+pain001 = ">=0.0.86,<1"
 asyncssh = ">=2.24,<3"
 pyyaml = ">=6,<7"
 defusedxml = ">=0.7,<1"
