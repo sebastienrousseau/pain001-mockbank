@@ -179,7 +179,7 @@ Coverage is gated at 100% line and branch, and the tests run the Quick Start and
 
 ## Security
 
-Use only synthetic data. Credentials and host keys are explicit; bind to loopback and do not expose the optional unauthenticated REST view publicly. YAML has no executable expressions, XML DTDs are refused, and uploads are limited to 8 MiB.
+Use only synthetic data. Credentials and host keys are explicit; bind to loopback and do not expose the optional unauthenticated REST view publicly. YAML has no executable expressions, XML DTDs are refused, and uploads are limited to 8 MiB. The project holds the [OpenSSF Best Practices passing badge](https://www.bestpractices.dev/projects/16559).
 
 Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
