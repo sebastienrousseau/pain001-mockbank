@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 import sys
 from pathlib import Path
 
@@ -89,3 +90,16 @@ def test_check_mode_fails_on_a_broken_structure(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["render_readme.py", "--check"])
     with pytest.raises(SystemExit, match="README structure"):
         render_readme.main()
+
+
+def test_every_readme_image_is_an_absolute_https_url():
+    """Registries such as PyPI do not resolve relative image paths."""
+    text = (ROOT / "README.md").read_text()
+    sources = re.findall(r'<img src="([^"]+)"', text)
+    assert sources
+    assert [s for s in sources if not s.startswith("https://")] == []
+    raw = "https://raw.githubusercontent.com/sebastienrousseau/"
+    for source in sources:
+        if source.startswith(raw):
+            path = source.removeprefix(f"{raw}{NAME}/main/")
+            assert (ROOT / path).is_file(), source

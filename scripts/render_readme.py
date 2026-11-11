@@ -41,7 +41,6 @@ CANONICAL_HEADINGS = (
 STATIC_DEFAULTS = {
     "LICENSE_SPDX": "Apache-2.0 OR MIT",
     "LICENSE_URL_ENCODED": "Apache--2.0%20OR%20MIT",
-    "LOGO_URL": "docs/logo.svg",
     "REGISTRY_BADGE_IMAGE": "https://img.shields.io/badge/distribution-source%20only",
     "API_DOCS_URL": "docs/usage.md",
     "API_DOCS_BADGE_IMAGE": "https://img.shields.io/badge/docs-source-blue.svg",
@@ -137,6 +136,12 @@ def render() -> str:
         "REPO_DOMAIN_AND_PATH": f"github.com/sebastienrousseau/{project}",
         # Shields wants owner/repo for a workflow badge, without the host.
         "REPO_SLUG": f"sebastienrousseau/{project}",
+        # PyPI and other registries do not resolve relative image paths,
+        # so the logo is served from the default branch.
+        "LOGO_URL": (
+            "https://raw.githubusercontent.com/"
+            f"sebastienrousseau/{project}/main/docs/logo.svg"
+        ),
         "REGISTRY_URL": repo,
         "INSTALL_LIBRARY_SNIPPET": (
             f"git clone {repo}.git\ncd {project}\npoetry install --all-extras"

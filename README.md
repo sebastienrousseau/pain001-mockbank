@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
 
 <p align="center">
-  <img src="docs/logo.svg" alt="pain001-mockbank logo" width="128" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-mockbank/main/docs/logo.svg" alt="pain001-mockbank logo" width="128" />
 </p>
 
 <h1 align="center">pain001-mockbank</h1>
@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <img src=".github/demo.gif" alt="pain001-mockbank --help, then examples/upload_and_collect.py uploading two synthetic payments over SFTP and printing ACCP and RJCT" width="100%" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-mockbank/main/.github/demo.gif" alt="pain001-mockbank --help, then examples/upload_and_collect.py uploading two synthetic payments over SFTP and printing ACCP and RJCT" width="100%" />
 </p>
 
 ---

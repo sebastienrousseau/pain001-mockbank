@@ -44,6 +44,11 @@
   check, so it is within every complexity ceiling and
   `complexity-baseline.json` is empty. The checks, their order and
   their messages are unchanged; `tests/test_rules.py` pins them.
+- The README logo and demo are absolute
+  `raw.githubusercontent.com` URLs on `main`, as the portfolio template
+  now requires, so they render where relative paths do not resolve
+  (PyPI and other registries). `render_readme.py` builds the logo URL
+  from the project name, and a test fails on any relative README image.
 
 ### Fixed
 
