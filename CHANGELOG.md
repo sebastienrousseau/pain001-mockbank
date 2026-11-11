@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.86] - 2026-11-11
+
 ### Added
 
 - Run the README Quick Start in the test suite (generate the host key,
@@ -25,6 +27,7 @@
 
 ### Changed
 
+- Release 0.0.86 in lockstep with the pain001 suite.
 - `pain001-mockbank --help` describes every option and its default; a
   test fails on an option without help text. `make lint` holds the
   package and examples to ruff's pydocstyle rules (Google convention),
