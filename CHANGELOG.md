@@ -11,6 +11,20 @@
   `examples/upload_and_collect.py`, an in-process SFTP walkthrough
   that the suite runs and `make lint` checks.
 - `make versions` also checks the `version` in `CITATION.cff`.
+- Complete the repository layout: `GOVERNANCE.md`, `SUPPORT.md`,
+  `KEYS.asc` (the SSH allowed-signers file that verifies commits and
+  tags), `docs/ARCHITECTURE.md`, `.editorconfig`,
+  `.pre-commit-config.yaml` and a dev container that runs `make check`.
+  `DEVELOPMENT.md` now reproduces every CI gate locally and describes
+  the test layout and release model.
+- Spell-check the tree with codespell 2.4.1 (hash-pinned in
+  `requirements/docs-lint.txt`) in the docs-lint workflow.
+
+### Changed
+
+- `SECURITY.md` follows the suite's layout: reporting channels, the
+  suite's response goals, threat model and hardening. The code of
+  conduct is the suite's shared text.
 - Add issue forms, a pull request template, CITATION.cff and a
   markdownlint CI job (`docs-lint.yml`, configured in
   `.markdownlint-cli2.jsonc`).
