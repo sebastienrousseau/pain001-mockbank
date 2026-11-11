@@ -40,6 +40,10 @@
 - `SECURITY.md` follows the suite's layout: reporting channels, the
   suite's response goals, threat model and hardening. The code of
   conduct is the suite's shared Contributor Covenant text.
+- `load_rules` validates each rule through one small function per
+  check, so it is within every complexity ceiling and
+  `complexity-baseline.json` is empty. The checks, their order and
+  their messages are unchanged; `tests/test_rules.py` pins them.
 
 ### Fixed
 
