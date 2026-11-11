@@ -1,0 +1,51 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+# Local hooks mirroring the cheap CI gates. Install once with
+# `pre-commit install`; CI remains the authority.
+#
+# ruff and mypy run from the Poetry environment rather than from pinned
+# hook repositories, so their versions come from poetry.lock and cannot
+# drift from what CI runs.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      # README.md is rendered from the portfolio template, and
+      # render_readme.py --check pins its bytes; the fuzz corpus holds
+      # byte-exact parser inputs.
+      - id: end-of-file-fixer
+        exclude: ^(README\.md|docs/readme-template\.md|fuzz/corpus/)
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: detect-private-key
+
+  # Same version and [tool.codespell] config as the docs-lint job.
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: poetry run ruff check --fix --force-exclude
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: poetry run ruff format --force-exclude
+        language: system
+        types: [python]
+      - id: mypy
+        name: mypy
+        entry: poetry run mypy pain001_mockbank
+        language: system
+        pass_filenames: false
+        types: [python]

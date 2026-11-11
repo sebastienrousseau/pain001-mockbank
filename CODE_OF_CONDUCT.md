@@ -1,9 +1,28 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
 
-# Code of conduct
+# Contributor Covenant Code of Conduct
 
-Be respectful, constructive and inclusive. Harassment, threats and disclosure
-of another person's private information are not acceptable. Report concerns
-privately to the maintainer at the contact in `pyproject.toml`; the maintainer
-may remove harmful content or restrict participation. No confidential payment
-or bank-restricted material belongs in discussions or contributions.
+## Our pledge
+
+We pledge to make participation in this project a harassment-free experience
+for everyone, regardless of age, body size, disability, ethnicity, sex
+characteristics, gender identity and expression, experience, education,
+socio-economic status, nationality, appearance, race, caste, colour,
+religion, or sexual identity and orientation.
+
+## Our standards
+
+Be respectful, constructive, empathetic, and accountable. Harassment,
+discrimination, personal attacks, sexualised attention, and publishing
+another person's private information are unacceptable. No confidential
+payment or bank-restricted material belongs in discussions or
+contributions.
+
+## Enforcement
+
+Report conduct concerns privately to the maintainer, at the email in
+`pyproject.toml` (`authors`). The maintainer may remove, edit, or reject contributions and may temporarily or permanently ban
+participants whose behaviour is inappropriate. Reports will be handled as
+confidentially as practical.
+
+This policy is adapted from Contributor Covenant 2.1.

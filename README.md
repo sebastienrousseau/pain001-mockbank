@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
 
 <p align="center">
-  <img src="docs/logo.svg" alt="pain001-mockbank logo" width="128" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-mockbank/main/docs/logo.svg" alt="pain001-mockbank logo" width="128" />
 </p>
 
 <h1 align="center">pain001-mockbank</h1>
@@ -11,12 +11,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-mockbank/ci.yml?branch=main&style=for-the-badge&logo=github" alt="Build" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/pain001-mockbank/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/pain001-mockbank/ci.yml?style=for-the-badge&logo=github" alt="Build" height="28" /></a>
   <a href="https://github.com/sebastienrousseau/pain001-mockbank/pkgs/container/pain001-mockbank"><img src="https://img.shields.io/badge/distribution-GHCR-fc8d62?style=for-the-badge&color=fc8d62&logo=python" alt="Registry" height="28" /></a>
   <a href="docs/usage.md"><img src="https://img.shields.io/badge/docs-source-blue.svg?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/pain001-mockbank"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/pain001-mockbank?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
   <a href="https://github.com/sebastienrousseau/pain001-mockbank/blob/main/docs/POLICIES.md"><img src="https://img.shields.io/badge/Python-3.11%2B-93450a.svg?style=for-the-badge&logo=python" alt="Python 3.11 or newer" height="28" /></a>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/pain001-mockbank/main/.github/demo.gif" alt="pain001-mockbank --help, then examples/upload_and_collect.py uploading two synthetic payments over SFTP and printing ACCP and RJCT" width="100%" />
 </p>
 
 ---
@@ -25,30 +29,30 @@
 
 **Getting started**
 
-- [Install](#install) — source checkout and locked dependencies
-- [Requirements](#requirements) — toolchain floor, platforms
-- [Quick Start](#quick-start) — start a local synthetic bank
+- [Install](#install): source checkout and locked dependencies
+- [Requirements](#requirements): toolchain floor, platforms
+- [Quick Start](#quick-start): start a local synthetic bank
 
 **The pain001-mockbank ecosystem**
 
-- [The pain001-mockbank ecosystem](#the-pain001-mockbank-ecosystem) — core library and this companion
+- [The pain001-mockbank ecosystem](#the-pain001-mockbank-ecosystem): core library and this companion
 
 **Library reference**
 
-- [Capabilities at a glance](#capabilities-at-a-glance) — the current surface by theme
-- [Ecosystem comparison](#ecosystem-comparison) — short matrix; full table at [`docs/COMPARISON.md`](docs/COMPARISON.md)
-- [Benchmarks](#benchmarks) — headline numbers; full table at [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)
-- [Features](#features) — module-level capability list
-- [Configuration](#configuration) — core options
-- [Examples](#examples) — runnable example index
+- [Capabilities at a glance](#capabilities-at-a-glance): the current surface by theme
+- [Ecosystem comparison](#ecosystem-comparison): short matrix; full table at [`docs/COMPARISON.md`](docs/COMPARISON.md)
+- [Benchmarks](#benchmarks): headline numbers; full table at [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md)
+- [Features](#features): module-level capability list
+- [Configuration](#configuration): core options
+- [Examples](#examples): runnable example index
 
 **Operational**
 
-- [When not to use pain001-mockbank](#when-not-to-use-pain001-mockbank) — limitations
-- [Development](#development) — make targets, fuzzing, CI
-- [Security](#security) — guarantees and compliance
-- [Documentation](#documentation) — all reference docs
-- [Stability guarantees](#stability-guarantees) — SemVer axis, output stability, minimum toolchain discipline
+- [When not to use pain001-mockbank](#when-not-to-use-pain001-mockbank): limitations
+- [Development](#development): make targets, fuzzing, CI
+- [Security](#security): guarantees and compliance
+- [Documentation](#documentation): all reference docs
+- [Stability guarantees](#stability-guarantees): SemVer axis, output stability, minimum toolchain discipline
 - [License](#license)
 
 ---
@@ -67,7 +71,7 @@ Each pain001 suite release, from 0.0.81, publishes a versioned image for
 linux/amd64 and linux/arm64, signed with cosign and never moved:
 
 ```sh
-docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.85
+docker pull ghcr.io/sebastienrousseau/pain001-mockbank:0.0.86
 ```
 
 The release's `image.txt` names it by digest. Development images are
@@ -151,7 +155,7 @@ Use --rules for a YAML policy, --root for mailbox storage, --inbox/--outbox/--ar
 
 ## Examples
 
-See [rules.yaml](examples/rules.yaml) and the [container guide](docs/usage.md).
+[upload_and_collect.py](examples/upload_and_collect.py) starts the bank in process, uploads a payment under the example rules' limit and one over it, and prints ACCP and RJCT. Run it with `poetry run python examples/upload_and_collect.py`. [rules.yaml](examples/rules.yaml) is the rules file it uses; the [container guide](docs/usage.md) runs the image.
 
 ---
 
@@ -166,9 +170,10 @@ Do not use for real payments, settlement simulation, production bank authenticat
 ```bash
 poetry install --all-extras
 poetry run make check
+poetry run make sec
 ```
 
-Tests use synthetic records. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift.
+Coverage is gated at 100% line and branch, and the tests run the Quick Start and every example. Tests use synthetic records. README changes come from docs/readme-values.json and scripts/render_readme.py; CI rejects drift and any departure from the portfolio template. [DEVELOPMENT.md](DEVELOPMENT.md) reproduces every CI gate.
 
 ---
 
@@ -182,13 +187,13 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Documentation
 
-[User manual](docs/usage.md) · [API and contract reference](docs/usage.md) · [Developer guide](DEVELOPMENT.md) · [Family map](https://github.com/sebastienrousseau/pain001)
+[User manual](docs/usage.md) · [API and contract reference](docs/ARCHITECTURE.md) · [Developer guide](DEVELOPMENT.md) · [Family map](https://github.com/sebastienrousseau/pain001)
 
 ---
 
 ## Stability guarantees
 
-Version 0.0.85, in lockstep with the pain001 suite. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
+Version 0.0.86, in lockstep with the pain001 suite. Maintainers open each next iteration explicitly, one 0.0.1 step at a time. Output changes and contract changes require review; no stable public API or deprecation window is promised yet. Toolchain-floor changes require a documented maintainer decision.
 
 ---
 

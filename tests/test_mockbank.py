@@ -378,3 +378,37 @@ def test_replies_move_to_the_archive_only(tmp_path):
 def test_the_archive_must_be_its_own_directory(tmp_path):
     with pytest.raises(ValueError):
         Bank(tmp_path, [], "inbox", "outbox", "outbox")
+
+
+def test_one_reply_block_per_payment_block():
+    """Transactions stay grouped under their own payment block.
+
+    0.0.85 answered a block of several transactions with one
+    OrgnlPmtInfAndSts per transaction, each repeating the block's id.
+    """
+    second_tx = (
+        b"<CdtTrfTxInf><PmtId><EndToEndId>END-2</EndToEndId></PmtId><Amt>"
+        b'<InstdAmt Ccy="EUR">50.00</InstdAmt></Amt></CdtTrfTxInf>'
+    )
+    second_block = (
+        b"<PmtInf><PmtInfId>BATCH-2</PmtInfId><CdtTrfTxInf><PmtId>"
+        b"<EndToEndId>END-3</EndToEndId></PmtId><Amt>"
+        b'<InstdAmt Ccy="EUR">2000000.00</InstdAmt></Amt></CdtTrfTxInf>'
+        b"</PmtInf>"
+    )
+    payload = PAYMENT.replace(
+        b"</CdtTrfTxInf>", b"</CdtTrfTxInf>" + second_tx, 1
+    )
+    payload = payload.replace(b"</PmtInf>", b"</PmtInf>" + second_block, 1)
+    root = ET.fromstring(make_reply(payload, load_rules(RULES)))
+    blocks = root.findall(".//{*}OrgnlPmtInfAndSts")
+    assert [b.findtext("{*}OrgnlPmtInfId") for b in blocks] == [
+        "BATCH-1",
+        "BATCH-2",
+    ]
+    assert [
+        [t.findtext("{*}OrgnlEndToEndId") for t in b.findall("{*}TxInfAndSts")]
+        for b in blocks
+    ] == [["END-1", "END-2"], ["END-3"]]
+    assert {b.findtext("{*}PmtInfSts") for b in blocks} == {"RJCT"}
+    assert len(root.findall(".//{*}StsRsnInf")) == 3

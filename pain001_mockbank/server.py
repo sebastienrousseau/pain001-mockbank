@@ -32,6 +32,12 @@ class Bank:
         outbox: str = "outbox",
         archive: str = "archive",
     ) -> None:
+        """Create the three mailboxes under root.
+
+        Raises:
+            ValueError: A name is not a simple identifier, two names are
+                the same, or a mailbox is a symlink.
+        """
         names = (inbox, outbox, archive)
         if (
             any(not name.isidentifier() for name in names)
@@ -74,6 +80,7 @@ class PasswordServer(asyncssh.SSHServer):
     """Authenticate one explicitly configured synthetic-test account."""
 
     def __init__(self, username: str, password: str) -> None:
+        """Hold the one account this server accepts."""
         self.username = username
         self.password = password
 
@@ -96,6 +103,7 @@ class PaymentSFTP(asyncssh.SFTPServer):
     """Restrict mutations to new inbox files and publish on close or rename."""
 
     def __init__(self, channel: Any, bank: Bank) -> None:
+        """Serve one SFTP session chrooted to the bank's root."""
         super().__init__(channel, chroot=os.fsencode(bank.root))
         self.bank = bank
         self.writing: dict[object, Path] = {}
@@ -273,18 +281,58 @@ async def run(args: argparse.Namespace) -> None:
             await asyncio.Event().wait()
 
 
+def _parser() -> argparse.ArgumentParser:
+    """Describe every option, so ``--help`` is the option reference."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    option = parser.add_argument
+    option(
+        "--root",
+        type=Path,
+        default=Path("mailbox"),
+        help="directory holding the mailboxes (default: %(default)s)",
+    )
+    option(
+        "--rules",
+        type=Path,
+        help="YAML rules file; without one, every payment is ACCP",
+    )
+    option(
+        "--host-key",
+        type=Path,
+        required=True,
+        help="SSH host private key; generate it outside the server",
+    )
+    option("--username", required=True, help="the one SFTP account name")
+    option(
+        "--password-env",
+        default="MOCKBANK_PASSWORD",
+        help="variable holding the password (default: %(default)s)",
+    )
+    option("--host", default="127.0.0.1", help="bind address (%(default)s)")
+    option("--port", type=int, default=2222, help="SFTP port (%(default)s)")
+    option(
+        "--inbox",
+        default="inbox",
+        help="upload mailbox (default: %(default)s)",
+    )
+    option(
+        "--outbox",
+        default="outbox",
+        help="reply mailbox (default: %(default)s)",
+    )
+    option(
+        "--archive",
+        default="archive",
+        help="collected replies (default: %(default)s)",
+    )
+    option(
+        "--rest-port",
+        type=int,
+        help="serve GET /replies on this port (needs the rest extra)",
+    )
+    return parser
+
+
 def main() -> None:
     """Parse test settings with explicit credentials and host keys."""
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path("mailbox"))
-    parser.add_argument("--rules", type=Path)
-    parser.add_argument("--host-key", type=Path, required=True)
-    parser.add_argument("--username", required=True)
-    parser.add_argument("--password-env", default="MOCKBANK_PASSWORD")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=2222)
-    parser.add_argument("--inbox", default="inbox")
-    parser.add_argument("--outbox", default="outbox")
-    parser.add_argument("--archive", default="archive")
-    parser.add_argument("--rest-port", type=int)
-    asyncio.run(run(parser.parse_args()))
+    asyncio.run(run(_parser().parse_args()))

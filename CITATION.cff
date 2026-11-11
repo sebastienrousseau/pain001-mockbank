@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+cff-version: 1.2.0
+message: "If you use pain001-mockbank in research or production write-ups, please cite it as below."
+type: software
+title: "pain001-mockbank: a synthetic SFTP bank for pain001 integration tests"
+abstract: >-
+  An authenticated, bounded SFTP service that answers synthetic pain.001
+  and pain.008 uploads with pain.002 acknowledgements, so a payment
+  pipeline can be tested end to end without a real bank.
+authors:
+  - family-names: Rousseau
+    given-names: Sebastien
+    email: sebastian.rousseau@gmail.com
+version: "0.0.86"
+date-released: "2026-11-11"
+# Dual-licensed, at the user's option (LICENSE, LICENSE-APACHE,
+# LICENSE-MIT). CFF 1.2.0 takes SPDX licence identifiers, not an SPDX
+# expression; a list of several means the work is available under any of
+# them.
+license:
+  - Apache-2.0
+  - MIT
+repository-code: "https://github.com/sebastienrousseau/pain001-mockbank"
+url: "https://pain001.com"
+keywords:
+  - ISO 20022
+  - pain.002
+  - SFTP
+  - integration testing
+  - payments

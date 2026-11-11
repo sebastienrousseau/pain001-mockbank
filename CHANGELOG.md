@@ -4,6 +4,67 @@
 
 ## [Unreleased]
 
+## [0.0.86] - 2026-11-11
+
+### Added
+
+- Run the README Quick Start in the test suite (generate the host key,
+  start the server, upload over SFTP, read the pain.002) and add
+  `examples/upload_and_collect.py`, an in-process SFTP walkthrough
+  that the suite runs and `make lint` checks.
+- `make versions` also checks the `version` in `CITATION.cff`.
+- Complete the repository layout: `GOVERNANCE.md`, `SUPPORT.md`,
+  `KEYS.asc` (the SSH allowed-signers file that verifies commits and
+  tags), `docs/ARCHITECTURE.md`, `.editorconfig`,
+  `.pre-commit-config.yaml` and a dev container that runs `make check`.
+  `DEVELOPMENT.md` now reproduces every CI gate locally and describes
+  the test layout and release model.
+- Spell-check the tree with codespell 2.4.1 (hash-pinned in
+  `requirements/docs-lint.txt`) in the docs-lint workflow.
+- Add issue forms, a pull request template, CITATION.cff and a
+  markdownlint CI job (`docs-lint.yml`, configured in
+  `.markdownlint-cli2.jsonc`).
+
+### Changed
+
+- Release 0.0.86 in lockstep with the pain001 suite and require core
+  pain001 0.0.86; the locks resolve its published artifacts.
+- `pain001-mockbank --help` describes every option and its default; a
+  test fails on an option without help text. `make lint` holds the
+  package and examples to ruff's pydocstyle rules (Google convention),
+  which added the three missing `__init__` docstrings. The demo is
+  re-rendered with the new help.
+- The README follows the portfolio template exactly: a demo
+  (`.github/demo.gif`, rendered from `.github/demo.tape` by `make demo`)
+  under the badges, the template's Build badge, an Examples section
+  naming the runnable example, and the Documentation links pointing at
+  the architecture page. `render_readme.py --check` (in `make docs`)
+  now also fails on a heading out of the template's order or an
+  unresolved `{{...}}` token.
+- `SECURITY.md` follows the suite's layout: reporting channels, the
+  suite's response goals, threat model and hardening. The code of
+  conduct is the suite's shared Contributor Covenant text.
+- `load_rules` validates each rule through one small function per
+  check, so it is within every complexity ceiling and
+  `complexity-baseline.json` is empty. The checks, their order and
+  their messages are unchanged; `tests/test_rules.py` pins them.
+- The README logo and demo are absolute
+  `raw.githubusercontent.com` URLs on `main`, as the portfolio template
+  now requires, so they render where relative paths do not resolve
+  (PyPI and other registries). `render_readme.py` builds the logo URL
+  from the project name, and a test fails on any relative README image.
+- `make sec` (run by the CI check job) also audits each hash-pinned
+  `requirements/*.txt` with pip-audit, not only the `poetry.lock`
+  environment: the Poetry, Atheris and codespell pins the image build
+  and the fuzz and docs-lint jobs install were never audited.
+
+### Fixed
+
+- Answer each payment block with one `OrgnlPmtInfAndSts` holding all of
+  its transactions. 0.0.85 wrote one block per transaction, each
+  repeating the block's id. Needs core pain001 0.0.86, whose pain.002
+  builder takes a `transactions` list, and the floor is now 0.0.86.
+
 ## [0.0.85] - 2026-11-10
 
 ### Added

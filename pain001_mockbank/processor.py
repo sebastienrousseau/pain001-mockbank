@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import re
 from decimal import Decimal, InvalidOperation
+from typing import Any
 from xml.etree.ElementTree import (
     Element,  # nosec B405 - type only; defusedxml parses below
 )
@@ -95,8 +96,12 @@ def _rows(
     initiation: Element,
     namespace: str,
     shape: tuple[str, tuple[str, ...]],
-) -> tuple[list[dict[str, str]], Decimal]:
-    """Collect every transaction's identifiers and the single-currency total.
+) -> tuple[list[dict[str, Any]], Decimal]:
+    """Collect each block's transaction identifiers and the total.
+
+    Returns one row per payment block, its transactions listed under
+    ``transactions``, as the pain.002 builder groups them, and the
+    single-currency total of every instructed amount.
 
     Raises:
         ValueError: No blocks, an empty block, or mixed currencies.
@@ -107,10 +112,10 @@ def _rows(
         raise ValueError("Payment has no payment information blocks")
     total, currencies, rows = Decimal(0), set(), []
     for block in blocks:
-        payment_id = _text(block, _path(namespace, "PmtInfId"))
         transactions = block.findall(_path(namespace, transaction_tag))
         if not transactions:
             raise ValueError("Payment block has no transactions")
+        listed = []
         for transaction in transactions:
             end_to_end = _text(
                 transaction, _path(namespace, "PmtId", "EndToEndId")
@@ -118,12 +123,15 @@ def _rows(
             number, currency = _amount(transaction, namespace, amount_path)
             currencies.add(currency)
             total += number
-            rows.append(
-                {
-                    "original_payment_information_id": payment_id,
-                    "original_end_to_end_id": end_to_end,
-                }
-            )
+            listed.append({"original_end_to_end_id": end_to_end})
+        rows.append(
+            {
+                "original_payment_information_id": _text(
+                    block, _path(namespace, "PmtInfId")
+                ),
+                "transactions": listed,
+            }
+        )
     if len(currencies) != 1:
         raise ValueError(
             "Mixed-currency totals require an explicit exchange-rate policy"
@@ -150,11 +158,11 @@ def make_reply(payload: bytes, rules: list[Rule]) -> str:
     )
     status = matched.status if matched else "ACCP"
     for row in rows:
-        row.update(
-            payment_information_status=status, transaction_status=status
-        )
-        if matched:
-            row["status_reason"] = matched.reason_code
+        row["payment_information_status"] = status
+        for tx in row["transactions"]:
+            tx["transaction_status"] = status
+            if matched:
+                tx["status_reason"] = matched.reason_code
     # The core builder owns XML serialization. Its current contract supports
     # reason codes, not free-text reason descriptions; do not rewrite its XML.
     return build_pain002_report(
