@@ -11,6 +11,14 @@
   meeting the OpenSSF Best Practices silver criterion
   `documentation_achievements`.
 
+### Changed
+
+- The SFTP listener no longer negotiates SHA-1: SHA-1 key exchange
+  (diffie-hellman-group14-sha1 and its GSS form), SHA-1 MACs and ssh-rsa
+  signatures, for the host key and for client keys, are removed from
+  asyncssh's defaults. A client that offers only those is refused;
+  OpenSSH, paramiko and asyncssh clients negotiate SHA-2 as before.
+
 ### Fixed
 
 - Suite Consistency pins the core's ecosystem check at `febcd0a`, which

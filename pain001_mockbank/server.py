@@ -219,6 +219,23 @@ class PaymentSFTP(asyncssh.SFTPServer):
     lsetstat = _deny
 
 
+def _host_keypairs(host_key: asyncssh.SSHKey) -> list[asyncssh.SSHKeyPair]:
+    """The host key, offered without ssh-rsa (RSA with SHA-1) signatures.
+
+    An RSA host key otherwise advertises ssh-rsa beside rsa-sha2-256 and
+    rsa-sha2-512; other key types are unchanged.
+    """
+    pairs = list(asyncssh.load_keypairs([host_key]))
+    for pair in pairs:
+        pair.host_key_algorithms = [
+            alg for alg in pair.host_key_algorithms if alg != b"ssh-rsa"
+        ]
+        pair.sig_algorithms = [
+            alg for alg in pair.sig_algorithms if alg != b"ssh-rsa"
+        ]
+    return pairs
+
+
 async def start_server(
     bank: Bank,
     username: str,
@@ -234,9 +251,14 @@ async def start_server(
         lambda: PasswordServer(username, password),
         host,
         port,
-        server_host_keys=[host_key],
+        server_host_keys=_host_keypairs(host_key),
         sftp_factory=lambda channel: PaymentSFTP(channel, bank),
         allow_scp=False,
+        # asyncssh still accepts SHA-1 key exchange, MACs and ssh-rsa
+        # client signatures by default; "-" removes matches from them.
+        kex_algs="-*sha1*",
+        mac_algs="-*sha1*",
+        signature_algs="-ssh-rsa",
     )
 
 
