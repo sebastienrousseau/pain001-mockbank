@@ -48,7 +48,8 @@ examples), `type` (mypy strict), `complexity`, `test`
 (pytest with the 100% line and branch coverage floor), `docs` (the
 README is current and follows the portfolio template) and `versions`
 (every version restatement agrees). `make sec` runs bandit and
-pip-audit.
+pip-audit, over the installed `poetry.lock` environment and each
+hash-pinned `requirements/*.txt`.
 
 | Workflow | Job | Local command |
 | :--- | :--- | :--- |

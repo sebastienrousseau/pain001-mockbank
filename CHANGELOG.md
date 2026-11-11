@@ -49,6 +49,10 @@
   now requires, so they render where relative paths do not resolve
   (PyPI and other registries). `render_readme.py` builds the logo URL
   from the project name, and a test fails on any relative README image.
+- `make sec` (run by the CI check job) also audits each hash-pinned
+  `requirements/*.txt` with pip-audit, not only the `poetry.lock`
+  environment: the Poetry, Atheris and codespell pins the image build
+  and the fuzz and docs-lint jobs install were never audited.
 
 ### Fixed
 

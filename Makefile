@@ -14,6 +14,13 @@ test:
 sec:
 	poetry run bandit -q -r pain001_mockbank
 	poetry run pip-audit --progress-spinner off
+	# The hash-pinned tool sets the Dockerfile and the fuzz and docs-lint
+	# jobs install are audited too, not only the Poetry lock.
+	for f in requirements/*.txt; do \
+	  echo "== $$f"; \
+	  poetry run pip-audit --progress-spinner off --require-hashes \
+	    --disable-pip -r "$$f" || exit 1; \
+	done
 docs:
 	poetry run python scripts/render_readme.py --check
 versions:
