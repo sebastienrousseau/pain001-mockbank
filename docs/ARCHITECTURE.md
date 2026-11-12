@@ -64,6 +64,9 @@ The package is three modules, each with one job.
   fixed limits, listed in [usage.md](usage.md).
 - **Trust is explicit.** The host key and the credentials are
   required arguments; there are no defaults to fall back to.
+- **No SHA-1.** The listener removes SHA-1 key exchange, SHA-1 MACs
+  and ssh-rsa signatures from asyncssh's defaults
+  (`tests/test_crypto_floor.py`).
 
 ## Tests and fuzzing
 
