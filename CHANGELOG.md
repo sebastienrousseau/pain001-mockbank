@@ -13,6 +13,11 @@
 
 ### Changed
 
+- Suite Consistency no longer runs on another workflow's completion
+  (`workflow_run`). It audits the family daily and on dispatch, as the
+  core's does, since that trigger runs with the default branch's trust
+  whatever started it. Regenerated from pain001's
+  `scripts/render_ecosystem_workflows.py`.
 - The SFTP listener no longer negotiates SHA-1: SHA-1 key exchange
   (diffie-hellman-group14-sha1 and its GSS form), SHA-1 MACs and ssh-rsa
   signatures, for the host key and for client keys, are removed from
