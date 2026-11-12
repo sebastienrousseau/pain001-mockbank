@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.87] - 2026-11-12
+
 ### Added
 
 - The README's Security section names the project's
@@ -13,8 +15,8 @@
 
 ### Changed
 
-- Requires pain001 0.0.87, in lockstep with the suite; the lock resolves
-  its published artifacts.
+- Release 0.0.87 in lockstep with the pain001 suite and require core
+  pain001 0.0.87; the lock resolves its published artifacts.
 - Suite Consistency no longer runs on another workflow's completion
   (`workflow_run`). It audits the family daily and on dispatch, as the
   core's does, since that trigger runs with the default branch's trust

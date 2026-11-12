@@ -12,7 +12,7 @@ dynamic = [
 ]
 
 [tool.poetry]
-version = "0.0.86"
+version = "0.0.87"
 description = "Synthetic SFTP payment acknowledgements for integration tests."
 readme = "README.md"
 authors = ["Sebastien Rousseau <sebastian.rousseau@gmail.com>"]
