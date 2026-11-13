@@ -30,7 +30,7 @@ pain001 = ">=0.0.87,<1"
 asyncssh = ">=2.24,<3"
 pyyaml = ">=6,<7"
 defusedxml = ">=0.7,<1"
-fastapi = {version = ">=0.135,<1", optional = true}
+fastapi = {version = ">=0.162.2,<1", optional = true}
 uvicorn = {version = ">=0.53,<1", optional = true}
 
 [tool.poetry.extras]
