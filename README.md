@@ -83,7 +83,7 @@ test credentials and mailbox storage are still required.
 
 ## Requirements
 
-Python 3.11 or newer and Poetry. CI checks 3.11 to 3.14 on Linux. See [toolchain policy](docs/POLICIES.md).
+Python 3.11 or newer and Poetry. CI checks 3.11 to 3.15 on Linux. See [toolchain policy](docs/POLICIES.md).
 
 ---
 

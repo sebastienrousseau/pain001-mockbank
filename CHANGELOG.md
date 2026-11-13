@@ -18,6 +18,10 @@
   the release workflow to sigstore/cosign-installer 4.1.3 and
   softprops/action-gh-release 3.0.4. pydantic moves to 2.14.3, whose
   pydantic-core 2.50.4 ships Python 3.15 wheels.
+- The container image runs on python:3.15-slim (#36), and CI tests
+  Python 3.15 alongside 3.11 to 3.14. PyYAML 6.0.3 has no 3.15 wheel,
+  so the image installs it from source without its C extension; the
+  pure-Python loader behaves the same, a little slower.
 
 ## [0.0.87] - 2026-11-12
 

@@ -83,7 +83,7 @@ The security surface is:
 
 - `ci.yml` runs ruff, mypy, the complexity ceilings, pytest with the
   100% line and branch floor, bandit and pip-audit on Python 3.11 to
-  3.14.
+  3.15.
 - `fuzz.yml` fuzzes the upload and rules parsers with Atheris on every
   change and weekly; the corpus is replayed by the test suite.
 - `scorecard.yml` runs OpenSSF Scorecard and uploads its results to code

@@ -11,7 +11,7 @@ how the code fits together.
 
 ## Toolchain
 
-- Python 3.11 or newer (CI tests 3.11, 3.12, 3.13 and 3.14).
+- Python 3.11 or newer (CI tests 3.11, 3.12, 3.13, 3.14 and 3.15).
 - [Poetry](https://python-poetry.org/docs/#installation) 2.4.1, the
   version CI installs. `poetry check --lock` runs in CI, so the lock
   must match `pyproject.toml`.
@@ -53,7 +53,7 @@ hash-pinned `requirements/*.txt`.
 
 | Workflow | Job | Local command |
 | :--- | :--- | :--- |
-| `ci.yml` | check (Python 3.11 to 3.14) | `poetry check --lock && poetry run make check && poetry run make sec` |
+| `ci.yml` | check (Python 3.11 to 3.15) | `poetry check --lock && poetry run make check && poetry run make sec` |
 | `ci.yml` | container | `docker build -t pain001-mockbank:local-test .` |
 | `docs-lint.yml` | codespell | `pip install --require-hashes -r requirements/docs-lint.txt && codespell` |
 | `docs-lint.yml` | markdownlint | `npx markdownlint-cli2@0.23.3 "**/*.md"` |
