@@ -56,7 +56,7 @@ STATIC_DEFAULTS = {
         "No PyPI release has been published for this initial iteration."
     ),
     "REQUIREMENTS_CONTENT": (
-        "Python 3.11 or newer and Poetry. CI checks 3.11 to 3.14 "
+        "Python 3.11 or newer and Poetry. CI checks 3.11 to 3.15 "
         "on Linux. See [toolchain policy](docs/POLICIES.md)."
     ),
     "ECOSYSTEM_OVERVIEW": (

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0 OR MIT
-FROM python:3.14-slim@sha256:caaf356f40667c496d405780745b9ac25771c189a51dfcc42430d531ea09f8a2 AS builder
+FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928 AS builder
 WORKDIR /app
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true PIP_DISABLE_PIP_VERSION_CHECK=1
 # Poetry and its tree are hash-pinned (requirements/poetry.txt), as
@@ -11,7 +11,7 @@ RUN poetry install --only main --all-extras --no-root --no-interaction
 COPY pain001_mockbank ./pain001_mockbank
 RUN poetry install --only-root --no-interaction
 
-FROM python:3.14-slim@sha256:caaf356f40667c496d405780745b9ac25771c189a51dfcc42430d531ea09f8a2
+FROM python:3.15-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928
 LABEL org.opencontainers.image.source="https://github.com/sebastienrousseau/pain001-mockbank"
 LABEL org.opencontainers.image.licenses="Apache-2.0 OR MIT"
 RUN useradd --uid 10001 --create-home mockbank && mkdir /data && chown mockbank /data
