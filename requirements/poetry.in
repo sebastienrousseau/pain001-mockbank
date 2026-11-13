@@ -3,4 +3,4 @@
 # with --require-hashes (OpenSSF Scorecard Pinned-Dependencies):
 #   uv pip compile --generate-hashes --universal --python-version 3.11 \
 #     requirements/poetry.in -o requirements/poetry.txt
-poetry==2.4.1
+poetry==2.5.1
