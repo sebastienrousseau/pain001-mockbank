@@ -54,7 +54,7 @@ complexipy = { version = ">=8.1,<9", python = "<3.16" }
 pip-audit = ">=2.10,<3"
 # pip-audit pulls in filelock (through cachecontrol). filelock <= 4.2.0 has
 # GHSA-9vhv-jxww-xfm5, GHSA-567q-5qvw-pf92 and GHSA-v4x8-3wr5-3wq8.
-filelock = ">=4.2.1"
+filelock = ">=4.2.10"
 # certifi comes in through httpx and pip-audit; PYSEC-2026-4320
 # (GHSA-6q48-6c7w-9gw2) affects releases before 2026.10.19.
 certifi = ">=2026.10.19"
