@@ -34,6 +34,9 @@
 
 - DEVELOPMENT.md and the devcontainer named Poetry 2.4.1 after CI and
   the lock moved to 2.5.1; both now name 2.5.1.
+- The codespell pre-commit hook ran 2.4.1 although its comment says it
+  matches the docs-lint job, which runs 2.4.3. It now pins 2.4.3 by
+  commit, as the other suite members do.
 
 ## [0.0.87] - 2026-11-12
 
