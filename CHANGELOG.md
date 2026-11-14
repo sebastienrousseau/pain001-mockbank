@@ -30,6 +30,11 @@
   so the image installs it from source without its C extension; the
   pure-Python loader behaves the same, a little slower.
 
+### Fixed
+
+- DEVELOPMENT.md and the devcontainer named Poetry 2.4.1 after CI and
+  the lock moved to 2.5.1; both now name 2.5.1.
+
 ## [0.0.87] - 2026-11-12
 
 ### Added
