@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.88] - 2026-11-14
+
 ### Security
 
 - The `rest` extra requires opentelemetry-api 1.45.2 or newer.
@@ -12,8 +14,11 @@
 
 ### Changed
 
-- Requires pain001 0.0.88, in lockstep with the suite; the lock resolves
-  its published artifacts.
+- Release 0.0.88 in lockstep with the pain001 suite and require core
+  pain001 0.0.88; the lock resolves its published artifacts.
+- Suite Consistency pins the core's ecosystem check at `404ebb9`, the
+  pain001 0.0.88 release commit. Regenerated from pain001's
+  `scripts/render_ecosystem_workflows.py`.
 - Dependency updates folded in from Dependabot (#37 to #43): the lock
   moves to fastapi 0.162.7, filelock 4.2.10 and ruff 0.17.5, the
   hash-pinned Poetry to 2.5.1 (also in CI) and codespell to 2.4.3, and
