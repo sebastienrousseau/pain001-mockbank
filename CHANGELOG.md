@@ -12,6 +12,8 @@
 
 ### Changed
 
+- Requires pain001 0.0.88, in lockstep with the suite; the lock resolves
+  its published artifacts.
 - Dependency updates folded in from Dependabot (#37 to #43): the lock
   moves to fastapi 0.162.7, filelock 4.2.10 and ruff 0.17.5, the
   hash-pinned Poetry to 2.5.1 (also in CI) and codespell to 2.4.3, and
