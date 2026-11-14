@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.88] - 2026-11-14
+
 ### Security
 
 - The `rest` extra requires opentelemetry-api 1.45.2 or newer.
@@ -12,6 +14,11 @@
 
 ### Changed
 
+- Release 0.0.88 in lockstep with the pain001 suite and require core
+  pain001 0.0.88; the lock resolves its published artifacts.
+- Suite Consistency pins the core's ecosystem check at `404ebb9`, the
+  pain001 0.0.88 release commit. Regenerated from pain001's
+  `scripts/render_ecosystem_workflows.py`.
 - Dependency updates folded in from Dependabot (#37 to #43): the lock
   moves to fastapi 0.162.7, filelock 4.2.10 and ruff 0.17.5, the
   hash-pinned Poetry to 2.5.1 (also in CI) and codespell to 2.4.3, and
@@ -22,6 +29,14 @@
   Python 3.15 alongside 3.11 to 3.14. PyYAML 6.0.3 has no 3.15 wheel,
   so the image installs it from source without its C extension; the
   pure-Python loader behaves the same, a little slower.
+
+### Fixed
+
+- DEVELOPMENT.md and the devcontainer named Poetry 2.4.1 after CI and
+  the lock moved to 2.5.1; both now name 2.5.1.
+- The codespell pre-commit hook ran 2.4.1 although its comment says it
+  matches the docs-lint job, which runs 2.4.3. It now pins 2.4.3 by
+  commit, as the other suite members do.
 
 ## [0.0.87] - 2026-11-12
 

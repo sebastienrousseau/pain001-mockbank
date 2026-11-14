@@ -12,7 +12,7 @@ how the code fits together.
 ## Toolchain
 
 - Python 3.11 or newer (CI tests 3.11, 3.12, 3.13, 3.14 and 3.15).
-- [Poetry](https://python-poetry.org/docs/#installation) 2.4.1, the
+- [Poetry](https://python-poetry.org/docs/#installation) 2.5.1, the
   version CI installs. `poetry check --lock` runs in CI, so the lock
   must match `pyproject.toml`.
 - `ssh-keygen` (OpenSSH), used by the Quick Start and its test.
