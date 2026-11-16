@@ -6,6 +6,12 @@
 
 ## [0.0.90] - Unreleased
 
+### Changed
+
+- Require core pain001 0.0.90; the lock resolves its published
+  artifacts. Its dependency floors are unchanged from 0.0.89, so no
+  other package moves.
+
 ## [0.0.89] - 2026-11-16
 
 ### Changed
