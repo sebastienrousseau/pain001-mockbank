@@ -4,7 +4,12 @@
 
 ## [Unreleased]
 
-## [0.0.89] - Unreleased
+## [0.0.89] - 2026-11-16
+
+### Changed
+
+- Release 0.0.89 in lockstep with the pain001 suite. The SFTP
+  listener, the replies it writes and the REST view are unchanged.
 
 ## [0.0.88] - 2026-11-14
 
