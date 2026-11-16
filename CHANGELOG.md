@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+## [0.0.90] - 2026-11-16
+
+### Changed
+
+- Release 0.0.90 in lockstep with the pain001 suite. The SFTP
+  listener, the replies it writes and the REST view are unchanged.
+- Require core pain001 0.0.90; the lock resolves its published
+  artifacts. Its dependency floors are unchanged from 0.0.89, so no
+  other package moves.
+
 ## [0.0.89] - 2026-11-16
 
 ### Changed
