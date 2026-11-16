@@ -8,8 +8,10 @@
 
 ### Changed
 
-- Release 0.0.89 in lockstep with the pain001 suite. The SFTP
-  listener, the replies it writes and the REST view are unchanged.
+- Release 0.0.89 in lockstep with the pain001 suite and require core
+  pain001 0.0.89; the lock resolves its published artifacts, and click
+  moves to 8.5.1, the core's new floor. The SFTP listener, the replies
+  it writes and the REST view are unchanged.
 
 ## [0.0.88] - 2026-11-14
 
