@@ -30,7 +30,7 @@ pain001 = ">=0.0.90,<1"
 asyncssh = ">=2.24,<3"
 pyyaml = ">=6,<7"
 defusedxml = ">=0.7,<1"
-fastapi = {version = ">=0.135,<1", optional = true}
+fastapi = {version = ">=0.163.1,<1", optional = true}
 uvicorn = {version = ">=0.53,<1", optional = true}
 # fastapi requires opentelemetry-api; releases before 1.45.2 have
 # CVE-2026-126360.
