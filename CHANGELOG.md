@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.91] - Unreleased
+
 ## [0.0.90] - 2026-11-16
 
 ### Changed
