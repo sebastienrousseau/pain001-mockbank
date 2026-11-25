@@ -1664,14 +1664,14 @@ files = [
 
 [[package]]
 name = "pain001"
-version = "0.0.90"
+version = "0.0.91"
 description = "Pain001 is a Python Library for Automating ISO 20022-Compliant Payment Files Using CSV Data."
 optional = false
 python-versions = "<4.0,>=3.11"
 groups = ["main"]
 files = [
-    {file = "pain001-0.0.90-py3-none-any.whl", hash = "sha256:b69a310eff4198bee51e61f37487ec4c24d23d6a5219f57b512215925fdbbd38"},
-    {file = "pain001-0.0.90.tar.gz", hash = "sha256:460def405e6ad28973e3b00da366774f5da82f619e834c9b4d48e54d9967c885"},
+    {file = "pain001-0.0.91-py3-none-any.whl", hash = "sha256:bb9deec8887a4abd395d3fb450605c03f2c5282cade88edc553cc882bfb6f36b"},
+    {file = "pain001-0.0.91.tar.gz", hash = "sha256:6bec12a3284c4d5eb9e5ecb2e7db94df6127ba0337d9451fde8c0c6c2d549f06"},
 ]
 
 [package.dependencies]
@@ -2652,4 +2652,4 @@ rest = ["fastapi", "opentelemetry-api", "uvicorn"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "0ea2b8725ef345ebce683244fd6666deeadd6b8ab26ff15ad8cb0f03479da3e8"
+content-hash = "45509675409c53cc7cac52444cb7b848e0a04dbd76bbbfd7bde1b2886bf8ed51"

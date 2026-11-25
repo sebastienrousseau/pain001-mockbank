@@ -4,19 +4,20 @@
 
 ## [Unreleased]
 
-## [0.0.91] - Unreleased
+## [0.0.91] - 2026-11-25
 
 ### Changed
 
 - Release 0.0.91 in lockstep with the pain001 suite. The SFTP
   listener, the replies it writes and the REST view are unchanged.
-  The floor on core pain001 stays at 0.0.90 until 0.0.91 is
-  published.
+- Require core pain001 0.0.91; the lock resolves its published
+  artifacts. Its dependency floors are unchanged from 0.0.90, so no
+  other package moves.
 - Dependencies, in place of Dependabot `#48` to `#52`:
 
   | Package | From | To | Where |
   | :--- | :--- | :--- | :--- |
-  | pain001 check-ecosystem action | 0.0.88 (`404ebb9`) | 0.0.90 (`3286059`) | Suite Consistency workflow |
+  | pain001 check-ecosystem action | 0.0.88 (`404ebb9`) | 0.0.91 (`83de54e`) | Suite Consistency workflow |
   | fastapi | 0.162.7 | 0.165.0 | rest extra, poetry.lock |
   | filelock | 4.2.10 | 4.3.1 | dev group, poetry.lock |
   | types-pyyaml | 6.0.12.20261103 | 6.0.12.20261122 | dev group, poetry.lock |
