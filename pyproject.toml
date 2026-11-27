@@ -60,7 +60,7 @@ pip-audit = ">=2.10,<3"
 filelock = ">=4.2.11"
 # certifi comes in through httpx and pip-audit; PYSEC-2026-4320
 # (GHSA-6q48-6c7w-9gw2) affects releases before 2026.10.19.
-certifi = ">=2026.10.19"
+certifi = ">=2026.11.20"
 # Via pip-audit -> cachecontrol. msgpack < 1.2.3: CVE-2026-114613 (Dependabot #5).
 msgpack = ">=1.2.3"
 
