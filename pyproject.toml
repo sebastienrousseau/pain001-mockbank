@@ -28,7 +28,7 @@ include = [
 python = ">=3.11,<4"
 pain001 = ">=0.0.91,<1"
 asyncssh = ">=2.24,<3"
-pyyaml = ">=6,<7"
+pyyaml = ">=6.0.4,<7"
 defusedxml = ">=0.7,<1"
 fastapi = {version = ">=0.163.1,<1", optional = true}
 uvicorn = {version = ">=0.53,<1", optional = true}
